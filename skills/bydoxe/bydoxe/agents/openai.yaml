@@ -1,0 +1,4 @@
+interface:
+  display_name: "BYDOXE"
+  short_description: "Use BYDOXE Open API safely"
+  default_prompt: "Use $bydoxe to answer a BYDOXE market data or account workflow request safely."

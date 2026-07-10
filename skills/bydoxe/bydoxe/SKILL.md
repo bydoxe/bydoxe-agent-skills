@@ -1,0 +1,53 @@
+---
+name: bydoxe
+description: BYDOXE Open API agent workflow guidance. Use when Codex needs to help with BYDOXE market data, account lookups, REST or WebSocket workflows, CLI command selection, API authentication, request signing, dry-run previews, or safe handling of orders, transfers, withdrawals, futures settings, TP/SL, trigger orders, and copy trading tasks.
+---
+
+# BYDOXE
+
+## Overview
+
+Use this skill to turn BYDOXE Open API requests into safe BYDOXE CLI workflows. Prefer the `bydoxe` CLI for REST execution, request preview, credential loading, and structured output.
+
+## Core Workflow
+
+1. Classify the user request as public read, authenticated read, write action, or WebSocket workflow.
+2. Read the matching reference file before giving commands or acting.
+3. Prefer `--dry-run` when building or reviewing requests.
+4. Never ask the user to paste API secrets into chat.
+5. Require explicit `CONFIRM` before any write action that can place orders, cancel orders, move funds, withdraw assets, change leverage or margin settings, close positions, modify TP/SL, or change copy trading settings.
+6. Report the exact CLI command, endpoint class, authentication requirement, and safety status before execution when risk is non-trivial.
+
+## Reference Routing
+
+- Setup, installation, environment variables, and default domains: read [setup.md](references/setup.md).
+- Authentication, HMAC signing, private REST headers, and WebSocket login signing: read [authentication.md](references/authentication.md).
+- Safety classification, `CONFIRM` rules, credential handling, and write-action review checklists: read [safety.md](references/safety.md).
+- Output expectations, dry-run previews, JSON handling, and command reporting: read [output.md](references/output.md).
+- BYDOXE terms, market categories, order concepts, and account terminology: read [glossary.md](references/glossary.md).
+
+## Current CLI Surface
+
+The initial BYDOXE CLI supports these public REST commands:
+
+- `bydoxe public time`
+- `bydoxe spot market symbols`
+- `bydoxe spot market tickers`
+- `bydoxe spot market orderbook`
+- `bydoxe spot market candles`
+- `bydoxe future market ticker`
+- `bydoxe future market mark-price`
+
+Common options:
+
+- `--base-url <url>`
+- `--format json`
+- `--dry-run`
+
+Treat additional command flags as query parameters unless a later reference file says otherwise.
+
+## Safety Defaults
+
+Public market data reads may be executed without extra confirmation. Authenticated reads may be executed after confirming the user has configured credentials locally.
+
+Write actions are blocked until the user replies with the exact word `CONFIRM` after seeing a concise risk summary and the exact command to run.
