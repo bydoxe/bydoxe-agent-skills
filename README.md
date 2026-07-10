@@ -17,6 +17,9 @@ Implemented:
 - Glossary reference
 - Language support reference
 - Output reference
+- Common public and exchange-level reference
+- Spot market reference
+- Futures market reference
 
 ## Layout
 
@@ -31,6 +34,9 @@ skills/bydoxe/bydoxe/
     glossary.md
     language-support.md
     output.md
+    common.md
+    spot-market.md
+    future-market.md
 ```
 
 ## CLI Dependency

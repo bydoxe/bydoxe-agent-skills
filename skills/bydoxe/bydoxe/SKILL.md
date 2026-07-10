@@ -26,6 +26,9 @@ Use this skill to turn BYDOXE Open API requests into safe BYDOXE CLI workflows. 
 - Multilingual request interpretation for Korean, Japanese, Chinese, Vietnamese, and Russian trading language: read [language-support.md](references/language-support.md).
 - Output expectations, dry-run previews, JSON handling, and command reporting: read [output.md](references/output.md).
 - BYDOXE terms, market categories, order concepts, and account terminology: read [glossary.md](references/glossary.md).
+- Server time and common exchange-level endpoints: read [common.md](references/common.md).
+- Spot market data requests for symbols, tickers, order books, candles, and trades: read [spot-market.md](references/spot-market.md).
+- Futures market data requests for tickers, mark price, depth, candles, funding, open interest, and long/short ratios: read [future-market.md](references/future-market.md).
 
 ## Current CLI Surface
 
@@ -46,6 +49,8 @@ Common options:
 - `--dry-run`
 
 Treat additional command flags as query parameters unless a later reference file says otherwise.
+
+Do not invent CLI support for endpoints that are not listed in the relevant reference file as currently supported. For planned endpoints, provide the endpoint and a planned command shape instead of executing it.
 
 ## Safety Defaults
 

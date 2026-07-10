@@ -7,3 +7,4 @@
 - Add setup, safety, authentication, glossary, and output references.
 - Add Codex skill UI metadata.
 - Add multilingual request interpretation reference.
+- Add common, spot market, and futures market REST references.
