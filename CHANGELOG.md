@@ -6,3 +6,4 @@
 - Add core BYDOXE skill instructions.
 - Add setup, safety, authentication, glossary, and output references.
 - Add Codex skill UI metadata.
+- Add multilingual request interpretation reference.

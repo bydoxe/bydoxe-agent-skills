@@ -15,6 +15,7 @@ Implemented:
 - Safety reference
 - Authentication reference
 - Glossary reference
+- Language support reference
 - Output reference
 
 ## Layout
@@ -28,6 +29,7 @@ skills/bydoxe/bydoxe/
     safety.md
     authentication.md
     glossary.md
+    language-support.md
     output.md
 ```
 

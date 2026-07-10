@@ -1,6 +1,6 @@
 ---
 name: bydoxe
-description: BYDOXE Open API agent workflow guidance. Use when Codex needs to help with BYDOXE market data, account lookups, REST or WebSocket workflows, CLI command selection, API authentication, request signing, dry-run previews, or safe handling of orders, transfers, withdrawals, futures settings, TP/SL, trigger orders, and copy trading tasks.
+description: BYDOXE Open API agent workflow guidance. Use when Codex needs to help with BYDOXE market data, account lookups, multilingual trading requests, REST or WebSocket workflows, CLI command selection, API authentication, request signing, dry-run previews, or safe handling of orders, transfers, withdrawals, futures settings, TP/SL, trigger orders, and copy trading tasks.
 ---
 
 # BYDOXE
@@ -23,6 +23,7 @@ Use this skill to turn BYDOXE Open API requests into safe BYDOXE CLI workflows. 
 - Setup, installation, environment variables, and default domains: read [setup.md](references/setup.md).
 - Authentication, HMAC signing, private REST headers, and WebSocket login signing: read [authentication.md](references/authentication.md).
 - Safety classification, `CONFIRM` rules, credential handling, and write-action review checklists: read [safety.md](references/safety.md).
+- Multilingual request interpretation for Korean, Japanese, Chinese, Vietnamese, and Russian trading language: read [language-support.md](references/language-support.md).
 - Output expectations, dry-run previews, JSON handling, and command reporting: read [output.md](references/output.md).
 - BYDOXE terms, market categories, order concepts, and account terminology: read [glossary.md](references/glossary.md).
 
