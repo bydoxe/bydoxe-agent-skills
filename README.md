@@ -18,8 +18,12 @@ Implemented:
 - Language support reference
 - Output reference
 - Common public and exchange-level reference
+- Authenticated account reference
 - Spot market reference
+- Authenticated spot account reference
 - Futures market reference
+- Authenticated futures position reference
+- Authenticated futures account reference
 
 ## Layout
 
@@ -35,8 +39,12 @@ skills/bydoxe/bydoxe/
     language-support.md
     output.md
     common.md
+    account.md
     spot-market.md
+    spot-account.md
     future-market.md
+    future-position.md
+    future-account.md
 ```
 
 ## CLI Dependency

@@ -8,3 +8,4 @@
 - Add Codex skill UI metadata.
 - Add multilingual request interpretation reference.
 - Add common, spot market, and futures market REST references.
+- Add authenticated account, spot account, futures position, and futures account references.
