@@ -80,6 +80,8 @@ node scripts/validate-skill.mjs
 
 The validation script checks required skill files, `SKILL.md` reference links, required reference sections, default domains, safety coverage terms, CLI command reference sync when the CLI project is available, unfinished markers, and English-only artifacts outside the multilingual language reference.
 
+Use [docs/release-readiness.md](docs/release-readiness.md) before publishing or tagging a release.
+
 ## Safety
 
 Do not paste API secrets into AI chat sessions. Configure credentials locally in the shell or a secure environment manager.

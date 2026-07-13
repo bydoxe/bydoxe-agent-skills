@@ -33,3 +33,4 @@
 - Document full local write validation coverage through generated CLI references.
 - Tighten companion CLI generated artifact freshness checks for command references and summaries.
 - Document the optional private read-only WebSocket live smoke gate.
+- Add a release readiness checklist for skill packaging, companion CLI synchronization, and safety review.
