@@ -128,3 +128,11 @@ Example read-only live command:
 ```sh
 BYDOXE_ENABLE_PRIVATE_WS_READONLY_LIVE=1 bydoxe websocket private subscribe --instType USDT-FUTURES --channel orders --instId BTCUSDT --live --max-messages 2 --timeout-ms 10000 --format json
 ```
+
+Optional private read-only live smoke:
+
+```sh
+BYDOXE_RUN_LIVE_PRIVATE_WS_TESTS=1 BYDOXE_ENABLE_PRIVATE_WS_READONLY_LIVE=1 npm run smoke:websocket-private-live
+```
+
+Use the smoke command only in a local environment with credentials. It validates bounded private read-only execution and credential redaction, and it stays skipped during default validation.
