@@ -36,6 +36,26 @@ CONFIRM
 
 Do not treat casual approval, partial approval, or a translated equivalent as confirmation for write actions.
 
+## Required Write-Action Coverage
+
+Keep these high-risk actions covered by `CONFIRM` guidance:
+
+- `place-order`
+- `cancel-order`
+- `withdraw`
+- `transfer`
+- `set-leverage`
+- `set-margin`
+- `set-margin-mode`
+- `close-positions`
+- `cancel-all`
+- `place-plan-order`
+- `modify-plan-order`
+- `place-tpsl-order`
+- `modify-tpsl-order`
+- copy trading settings, follower removal, position close, and cancel-follow actions
+- WebSocket spot trade payloads
+
 ## Public Read Rule
 
 Public market data reads may run without explicit confirmation. Prefer `--dry-run` when the user asks to review the request, debug an endpoint, or generate a command for later use.

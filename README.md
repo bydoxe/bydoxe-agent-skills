@@ -72,6 +72,14 @@ bydoxe --help
 bydoxe spot market tickers --symbol BTCUSDT --dry-run --format json
 ```
 
+## Validation
+
+```sh
+node scripts/validate-skill.mjs
+```
+
+The validation script checks required skill files, `SKILL.md` reference links, default domains, safety coverage terms, unfinished markers, and English-only artifacts outside the multilingual language reference.
+
 ## Safety
 
 Do not paste API secrets into AI chat sessions. Configure credentials locally in the shell or a secure environment manager.
