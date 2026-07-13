@@ -30,9 +30,13 @@ Use this skill to turn BYDOXE Open API requests into safe BYDOXE CLI workflows. 
 - Authenticated account overview and funding balance reads: read [account.md](references/account.md).
 - Spot market data requests for symbols, tickers, order books, candles, and trades: read [spot-market.md](references/spot-market.md).
 - Authenticated spot balances, spot order reads, deposit records, withdrawal records, transfer records, and deposit addresses: read [spot-account.md](references/spot-account.md).
+- Spot order placement, cancellation, cancel-replace, and batch spot order writes: read [spot-trade.md](references/spot-trade.md).
 - Futures market data requests for tickers, mark price, depth, candles, funding, open interest, and long/short ratios: read [future-market.md](references/future-market.md).
 - Authenticated futures position reads: read [future-position.md](references/future-position.md).
 - Authenticated futures account estimates and futures order reads: read [future-account.md](references/future-account.md).
+- Futures order placement, modification, cancellation, close-position, and cancel-all writes: read [future-order.md](references/future-order.md).
+- Futures trigger order writes: read [future-trigger.md](references/future-trigger.md).
+- Futures take-profit and stop-loss writes: read [future-tpsl.md](references/future-tpsl.md).
 
 ## Current CLI Surface
 

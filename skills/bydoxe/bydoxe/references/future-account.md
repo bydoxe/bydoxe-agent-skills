@@ -6,7 +6,7 @@ Use this reference for authenticated futures account reads, risk estimates, and 
 
 Authentication is required. Never ask the user to paste API keys, secrets, or passphrases into chat.
 
-The endpoints in this file are read-only and do not require `CONFIRM`. Setting leverage, setting margin, changing margin mode, placing orders, cancelling orders, closing positions, trigger orders, and TP/SL changes are write actions and require exact `CONFIRM`.
+Read-only endpoints in this file do not require `CONFIRM`. Setting leverage, setting margin, changing margin mode, placing orders, cancelling orders, closing positions, trigger orders, and TP/SL changes are write actions and require exact `CONFIRM`.
 
 ## Account and Estimate Commands
 
@@ -105,3 +105,29 @@ Order reads:
 | `price` | Order or fill price |
 | `size` | Order or fill size |
 | `status` | Order status when returned |
+
+## Futures Account Write Commands
+
+These commands change futures risk settings. They require `--dry-run` review first and exact `--confirm CONFIRM` for live execution.
+
+| Purpose | CLI Command | Endpoint | Risk |
+| --- | --- | --- | --- |
+| Change leverage | `bydoxe future account set-leverage` | `POST /future/account/set-leverage` | Changes long and/or short leverage |
+| Adjust margin | `bydoxe future account set-margin` | `POST /future/account/set-margin` | Adds or removes position margin |
+| Change margin mode | `bydoxe future account set-margin-mode` | `POST /future/account/set-margin-mode` | Changes cross or isolated behavior |
+
+Dry-run examples:
+
+```sh
+bydoxe future account set-leverage --symbol BTCUSDT --longLeverage 5 --shortLeverage 5 --dry-run --format json
+bydoxe future account set-margin --body '{"symbol":"BTCUSDT","holdSide":"LONG","amount":100}' --dry-run --format json
+bydoxe future account set-margin-mode --symbol BTCUSDT --marginMode isolated --dry-run --format json
+```
+
+Required pre-confirmation summary:
+
+- Exact CLI command.
+- Symbol, position side, leverage, margin amount, or margin mode.
+- Current value if known and intended new value.
+- Expected risk effect.
+- Statement that live execution requires exact `CONFIRM`.

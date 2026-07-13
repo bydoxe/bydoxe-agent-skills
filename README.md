@@ -21,9 +21,13 @@ Implemented:
 - Authenticated account reference
 - Spot market reference
 - Authenticated spot account reference
+- Spot trade write reference
 - Futures market reference
 - Authenticated futures position reference
 - Authenticated futures account reference
+- Futures order write reference
+- Futures trigger order write reference
+- Futures TP/SL write reference
 
 ## Layout
 
@@ -42,9 +46,13 @@ skills/bydoxe/bydoxe/
     account.md
     spot-market.md
     spot-account.md
+    spot-trade.md
     future-market.md
     future-position.md
     future-account.md
+    future-order.md
+    future-trigger.md
+    future-tpsl.md
 ```
 
 ## CLI Dependency

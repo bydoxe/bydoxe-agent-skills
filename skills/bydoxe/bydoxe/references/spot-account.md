@@ -6,7 +6,7 @@ Use this reference for authenticated spot account reads, deposit/withdrawal reco
 
 Authentication is required. Never ask the user to paste API keys, secrets, or passphrases into chat.
 
-The endpoints in this file are read-only and do not require `CONFIRM`. Transfers, withdrawals, withdrawal cancellations, order placement, order cancellation, and cancel-replace actions are write actions and require exact `CONFIRM`.
+Read-only endpoints in this file do not require `CONFIRM`. Transfers, withdrawals, withdrawal cancellations, order placement, order cancellation, and cancel-replace actions are write actions and require exact `CONFIRM`.
 
 ## Commands
 
@@ -90,3 +90,29 @@ Order reads:
 | `price` | Order or fill price |
 | `size` | Order or fill quantity |
 | `status` | Order status when returned by the endpoint |
+
+## Spot Account Write Commands
+
+These commands move funds or affect withdrawals. They require `--dry-run` review first and exact `--confirm CONFIRM` for live execution.
+
+| Purpose | CLI Command | Endpoint | Risk |
+| --- | --- | --- | --- |
+| Transfer funds | `bydoxe spot account transfer` | `POST /spot/account/transfer` | Moves funds between accounts |
+| Withdraw assets | `bydoxe spot account withdraw` | `POST /spot/account/withdraw` | Sends assets out of the exchange |
+| Cancel withdrawal | `bydoxe spot account cancel-withdraw` | `POST /spot/account/cancel-withdraw` | Cancels a withdrawal request |
+
+Dry-run examples:
+
+```sh
+bydoxe spot account transfer --body '{"coin":"USDT","amount":"100","fromType":"spot","toType":"funding"}' --dry-run --format json
+bydoxe spot account withdraw --body '{"coin":"USDT","chain":"TRC20","address":"example","amount":"10"}' --dry-run --format json
+bydoxe spot account cancel-withdraw --body '{"withdrawId":"withdrawal-id"}' --dry-run --format json
+```
+
+Required pre-confirmation summary:
+
+- Exact CLI command.
+- Asset, amount, source account, destination account, chain, and destination address when applicable.
+- Withdrawal or transfer identifier for cancellation.
+- Expected effect and whether funds leave the exchange.
+- Statement that live execution requires exact `CONFIRM`.
