@@ -46,6 +46,8 @@ Ask a clarification question before acting when a phrase could mean either analy
 | "average down" or equivalent | Could place additional buy orders | Treat as order intent and require order details plus `CONFIRM` |
 | TP/SL phrases | Could create, modify, or inspect take-profit and stop-loss orders | Ask whether the user wants a read-only explanation or a live TP/SL change |
 
+For "sell all", "close all", or equivalent phrases, do not ask for `CONFIRM` immediately. First establish the exact asset, account type, available amount or position size, order type, and target command. Use a read-only balance or position lookup when the amount is unknown, then show a dry-run write preview before requesting `CONFIRM`.
+
 ## Confirmation Rule
 
 The following approval words are not enough for write actions:

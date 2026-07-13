@@ -36,6 +36,10 @@ CONFIRM
 
 Do not treat casual approval, partial approval, or a translated equivalent as confirmation for write actions.
 
+Do not ask for `CONFIRM` until all material parameters are known and an exact command has been shown. If a request is missing symbol, side, order type, quantity, price, account, order ID, position side, follower/trader identifier, or other required context, ask for the missing information or propose a read-only lookup first.
+
+For "all", "full balance", "close everything", or equivalent requests, do not infer the quantity. Use an authenticated read command to inspect balances, positions, or open orders first, then build a dry-run write preview with explicit values.
+
 ## Required Write-Action Coverage
 
 Keep these high-risk actions covered by `CONFIRM` guidance:

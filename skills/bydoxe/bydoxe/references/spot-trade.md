@@ -12,6 +12,8 @@ Do not treat casual approval as confirmation. Live execution requires:
 CONFIRM
 ```
 
+Do not ask for `CONFIRM` before showing a dry-run command with explicit order details. If the user asks to sell "all" or "the full balance", first ask to inspect the available asset balance or request the exact quantity. Never infer a full-balance order size from the trading pair alone.
+
 ## Commands
 
 | Purpose | CLI Command | Endpoint | Risk |
@@ -42,6 +44,8 @@ Before live execution, show:
 - Number of orders for batch actions.
 - Expected effect.
 - Confirmation requirement: exact `CONFIRM`.
+
+If any item above is unknown, ask for the missing value or propose a read-only balance/order lookup. Do not request `CONFIRM` yet.
 
 ## Body Guidance
 
