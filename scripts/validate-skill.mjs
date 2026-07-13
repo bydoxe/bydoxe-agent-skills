@@ -204,6 +204,7 @@ const problems = [
   ...await findMissingDomainProblems(files),
   ...await findMissingSafetyTerms(),
   ...await findReferenceSectionProblems(),
+  ...await findCliGeneratedArtifactProblems(),
   ...await findCliReferenceSyncProblems(files),
 ];
 
@@ -384,6 +385,57 @@ async function findCliReferenceSyncProblems(filesToScan) {
   ];
 }
 
+async function findCliGeneratedArtifactProblems() {
+  const cliProjectExists = await isDirectory(cliProjectRoot);
+  if (!cliProjectExists) {
+    return [];
+  }
+
+  const artifactPaths = {
+    catalog: path.join(cliProjectRoot, 'docs', 'command-catalog.json'),
+    reference: path.join(cliProjectRoot, 'docs', 'command-reference.md'),
+    summary: path.join(cliProjectRoot, 'docs', 'command-summary.md'),
+  };
+  const problems = [];
+
+  for (const [name, file] of Object.entries(artifactPaths)) {
+    if (!await isFile(file)) {
+      problems.push(
+        `CLI generated ${name} artifact is missing: ${path.relative(cliProjectRoot, file)}`,
+      );
+    }
+  }
+
+  if (problems.length > 0) return problems;
+
+  const catalog = await readCliCommandCatalog(artifactPaths.catalog);
+  if (!catalog) {
+    return [
+      `CLI generated catalog artifact is invalid: ${
+        path.relative(cliProjectRoot, artifactPaths.catalog)
+      }`,
+    ];
+  }
+
+  const referenceText = await readFile(artifactPaths.reference, 'utf8');
+  const summaryText = await readFile(artifactPaths.summary, 'utf8');
+  const expectedCommandCount = catalog.commands.length;
+
+  if (catalog.commandCount !== expectedCommandCount) {
+    problems.push(
+      `CLI command catalog count mismatch: commandCount=${catalog.commandCount}, commands=${expectedCommandCount}`,
+    );
+  }
+  if (!referenceText.includes(`Command count: \`${catalog.commandCount}\``)) {
+    problems.push('CLI command reference is missing the catalog command count.');
+  }
+  if (!summaryText.includes(`Command count: \`${catalog.commandCount}\``)) {
+    problems.push('CLI command summary is missing the catalog command count.');
+  }
+
+  return problems;
+}
+
 async function collectCliRegistryCommands(projectRoot) {
   const catalogCommands = await collectCliCatalogCommands(projectRoot);
   if (catalogCommands) return catalogCommands;
@@ -409,14 +461,27 @@ async function collectCliCatalogCommands(projectRoot) {
   const catalogPath = path.join(projectRoot, 'docs', 'command-catalog.json');
 
   try {
-    const catalog = JSON.parse(await readFile(catalogPath, 'utf8'));
-    if (!Array.isArray(catalog.commands)) return undefined;
+    const catalog = await readCliCommandCatalog(catalogPath);
+    if (!catalog) return undefined;
 
     return catalog.commands.map((command) =>
       typeof command.command === 'string'
         ? command.command
         : 'invalid-catalog-command',
     );
+  } catch {
+    return undefined;
+  }
+}
+
+async function readCliCommandCatalog(catalogPath) {
+  try {
+    const catalog = JSON.parse(await readFile(catalogPath, 'utf8'));
+    if (!catalog || typeof catalog !== 'object' || !Array.isArray(catalog.commands)) {
+      return undefined;
+    }
+
+    return catalog;
   } catch {
     return undefined;
   }
@@ -440,6 +505,15 @@ async function isDirectory(directory) {
   try {
     const directoryStat = await stat(directory);
     return directoryStat.isDirectory();
+  } catch {
+    return false;
+  }
+}
+
+async function isFile(file) {
+  try {
+    const fileStat = await stat(file);
+    return fileStat.isFile();
   } catch {
     return false;
   }
