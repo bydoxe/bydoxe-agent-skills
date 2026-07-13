@@ -18,6 +18,8 @@ bydoxe --help
 
 When available, use `cli-project/docs/command-reference.md` as the generated CLI command reference for endpoint mapping, parameter hints, risk levels, and write validation rules.
 
+When available, use `cli-project/docs/command-summary.md` as the generated quick status summary for command counts, group coverage, risk profile, and safety scope.
+
 During early development, the CLI may be run from source:
 
 ```sh

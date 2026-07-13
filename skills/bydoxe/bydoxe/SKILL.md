@@ -48,6 +48,8 @@ The BYDOXE CLI supports public REST reads, authenticated account and order reads
 
 When the companion CLI repository is available, treat `cli-project/docs/command-reference.md` as the generated canonical command surface for endpoint mapping, parameter hints, risk levels, and write validation rules.
 
+Use `cli-project/docs/command-summary.md` as the generated quick status summary for command counts, group coverage, risk profile, and safety scope when the companion CLI repository is available.
+
 Common options:
 
 - `--base-url <url>`
