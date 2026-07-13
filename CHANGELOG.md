@@ -21,3 +21,4 @@
 - Update futures market reference for complete public REST CLI coverage.
 - Add spot order information and futures trigger order read references.
 - Prefer the generated CLI command catalog for Agent Skill command coverage validation.
+- Clarify that private WebSocket live execution is preview-only behind safety gates.

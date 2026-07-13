@@ -34,7 +34,7 @@ The CLI loads credentials from local environment variables and redacts credentia
 
 ## CLI Support
 
-The CLI currently builds WebSocket connection and message previews. Live WebSocket sessions are not implemented yet.
+The CLI currently builds WebSocket connection and message previews. Private WebSocket live execution is intentionally disabled behind a safety gate.
 
 | Purpose | CLI Command | Message Shape | Risk |
 | --- | --- | --- | --- |
@@ -106,4 +106,11 @@ Private spot trade previews are write-action payloads. Before any future live ex
 - Expected order effect.
 - Confirmation requirement: exact `CONFIRM`.
 
-If the user asks to send a private spot trade over WebSocket, first use `--dry-run` and then require exact `CONFIRM`.
+If the user asks to send a private spot trade over WebSocket, keep the workflow in preview-only mode. Do not claim private WebSocket live execution is supported.
+
+Private WebSocket live execution must remain disabled until these gates are implemented:
+
+- Authenticated login handshake verification.
+- Bounded read-only private stream smoke tests.
+- Separate trade-send implementation with exact `CONFIRM`.
+- Explicit opt-in environment gate for live private sessions.
