@@ -30,3 +30,4 @@
 - Prefer generated nested validation rules for supported batch write bodies.
 - Validate companion CLI generated catalog, reference, and summary artifacts when available.
 - Document the opt-in private WebSocket read-only live gate.
+- Document full local write validation coverage through generated CLI references.

@@ -53,7 +53,7 @@ Before asking for `CONFIRM` on a batch write, show:
 - Identifier count for batch cancellations.
 - Any missing or ambiguous nested value.
 
-Use generated command reference validation rules when the companion CLI exposes nested validation for the target batch body. If nested validation is not listed for the target command, keep the workflow in dry-run review mode and ask for explicit missing values before live execution.
+Use generated command reference validation rules when the companion CLI exposes validation for the target write body. If validation is not listed for the target command, keep the workflow in dry-run review mode and ask for explicit missing values before live execution.
 
 ## Required Write-Action Coverage
 
