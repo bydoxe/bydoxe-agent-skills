@@ -26,3 +26,4 @@
 - Document the read-only private WebSocket live boundary for later CLI support.
 - Add batch write body review guidance for nested order structures.
 - Point agent workflows to the generated CLI command summary when available.
+- Clarify that internal private WebSocket executor code is not user-facing live support.

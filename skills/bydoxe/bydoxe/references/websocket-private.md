@@ -122,3 +122,5 @@ The companion CLI may later add a read-only private WebSocket live path for logi
 Do not include `bydoxe websocket private spot trade` in any read-only live workflow. WebSocket trade payloads need a separate high-risk execution path with exact `CONFIRM`.
 
 Until the CLI exposes and validates this read-only path, keep all private WebSocket live requests in preview-only mode.
+
+The companion CLI may contain internal mock-tested read-only executor code before the CLI exposes private live execution. Do not treat internal executor code as user-facing live support.
