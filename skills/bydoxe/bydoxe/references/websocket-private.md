@@ -106,9 +106,9 @@ Private spot trade previews are write-action payloads. Before any future live ex
 - Expected order effect.
 - Confirmation requirement: exact `CONFIRM`.
 
-If the user asks to send a private spot trade over WebSocket, keep the workflow in preview-only mode. Do not claim private WebSocket live execution is supported.
+If the user asks to send a private spot trade over WebSocket, keep the workflow in preview-only mode. Do not claim private WebSocket trade live execution is supported.
 
-Private WebSocket live execution must remain disabled until these gates are implemented:
+Private WebSocket trade live execution must remain disabled until these gates are implemented:
 
 - Authenticated login handshake verification.
 - Bounded read-only private stream smoke tests.
@@ -117,10 +117,14 @@ Private WebSocket live execution must remain disabled until these gates are impl
 
 ## Read-Only Live Boundary
 
-The companion CLI may later add a read-only private WebSocket live path for login plus private subscribe or unsubscribe sessions. That path must stay limited to authenticated read-only streams, must use bounded runtime controls, and must require an explicit environment opt-in.
+The companion CLI supports a read-only private WebSocket live path only for private subscribe or unsubscribe sessions when the user explicitly enables `BYDOXE_ENABLE_PRIVATE_WS_READONLY_LIVE=1`. That path stays limited to authenticated read-only streams, must use bounded runtime controls, and requires locally configured credentials.
 
 Do not include `bydoxe websocket private spot trade` in any read-only live workflow. WebSocket trade payloads need a separate high-risk execution path with exact `CONFIRM`.
 
-Until the CLI exposes and validates this read-only path, keep all private WebSocket live requests in preview-only mode.
+If the user has not explicitly enabled the private read-only live environment gate, keep private WebSocket live requests in preview-only mode.
 
-The companion CLI may contain internal mock-tested read-only executor code before the CLI exposes private live execution. Do not treat internal executor code as user-facing live support.
+Example read-only live command:
+
+```sh
+BYDOXE_ENABLE_PRIVATE_WS_READONLY_LIVE=1 bydoxe websocket private subscribe --instType USDT-FUTURES --channel orders --instId BTCUSDT --live --max-messages 2 --timeout-ms 10000 --format json
+```

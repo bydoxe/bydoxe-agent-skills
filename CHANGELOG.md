@@ -29,3 +29,4 @@
 - Clarify that internal private WebSocket executor code is not user-facing live support.
 - Prefer generated nested validation rules for supported batch write bodies.
 - Validate companion CLI generated catalog, reference, and summary artifacts when available.
+- Document the opt-in private WebSocket read-only live gate.
