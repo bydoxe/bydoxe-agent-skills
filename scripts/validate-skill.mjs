@@ -7,11 +7,19 @@ const skillRoot = path.join(root, 'skills', 'bydoxe', 'bydoxe');
 const skillFile = path.join(skillRoot, 'SKILL.md');
 const referencesRoot = path.join(skillRoot, 'references');
 const languageSupportFile = path.join(referencesRoot, 'language-support.md');
+const cliProjectRoot =
+  process.env.BYDOXE_CLI_PROJECT_DIR ?? path.resolve(root, '..', 'cli-project');
 
 const expectedDomains = [
   'https://open-api.bydoxe.com/api/v1',
   'wss://open-api.bydoxe.com/v1/ws/public',
   'wss://open-api.bydoxe.com/v1/ws/private',
+];
+const commandSourceFiles = [
+  'src/commands/public-rest.ts',
+  'src/commands/private-rest.ts',
+  'src/commands/write-rest.ts',
+  'src/commands/websocket.ts',
 ];
 const unfinishedMarkerPattern = new RegExp(
   `\\b(${['TO' + 'DO', 'FIX' + 'ME', 'T' + 'BD'].join('|')})\\b`,
@@ -50,6 +58,7 @@ const problems = [
   ...await findPatternProblems(files, unfinishedMarkerPattern, 'unfinished marker'),
   ...await findMissingDomainProblems(files),
   ...await findMissingSafetyTerms(),
+  ...await findCliReferenceSyncProblems(files),
 ];
 
 if (problems.length > 0) {
@@ -161,4 +170,92 @@ async function findMissingSafetyTerms() {
   return requiredSafetyTerms
     .filter((term) => !safetyText.includes(term))
     .map((term) => `Safety reference is missing required term: ${term}`);
+}
+
+async function findCliReferenceSyncProblems(filesToScan) {
+  const cliProjectExists = await isDirectory(cliProjectRoot);
+  if (!cliProjectExists) {
+    return process.env.BYDOXE_CLI_PROJECT_DIR
+      ? [`CLI project directory is missing: ${cliProjectRoot}`]
+      : [];
+  }
+
+  const cliCommands = await collectCliRegistryCommands(cliProjectRoot);
+  const duplicateCommands = findDuplicates(cliCommands);
+  const skillText = (
+    await Promise.all(
+      filesToScan
+        .filter((file) => file.startsWith(skillRoot))
+        .map((file) => readFile(file, 'utf8')),
+    )
+  ).join('\n');
+  const missingCommands = unique(cliCommands).filter(
+    (command) => !skillText.includes(`\`${command}\``),
+  );
+
+  return [
+    ...duplicateCommands.map((command) => `Duplicate CLI command: ${command}`),
+    ...missingCommands.map(
+      (command) => `Skill references are missing CLI command: ${command}`,
+    ),
+  ];
+}
+
+async function collectCliRegistryCommands(projectRoot) {
+  const commands = [];
+
+  for (const relativeFile of commandSourceFiles) {
+    const sourceFile = path.join(projectRoot, relativeFile);
+    try {
+      const sourceText = await readFile(sourceFile, 'utf8');
+      commands.push(...extractCommands(sourceText));
+    } catch {
+      commands.push(`missing-source:${relativeFile}`);
+    }
+  }
+
+  return commands.map((command) =>
+    command.startsWith('missing-source:') ? command : `bydoxe ${command}`,
+  );
+}
+
+function extractCommands(sourceText) {
+  const commands = [];
+  const commandPattern = /command:\s*\[([^\]]+)\]/g;
+
+  for (const match of sourceText.matchAll(commandPattern)) {
+    const parts = [...match[1].matchAll(/'([^']+)'/g)].map((part) => part[1]);
+    if (parts.length > 0) {
+      commands.push(parts.join(' '));
+    }
+  }
+
+  return commands;
+}
+
+async function isDirectory(directory) {
+  try {
+    const directoryStat = await stat(directory);
+    return directoryStat.isDirectory();
+  } catch {
+    return false;
+  }
+}
+
+function findDuplicates(values) {
+  const seen = new Set();
+  const duplicates = new Set();
+
+  for (const value of values) {
+    if (seen.has(value)) {
+      duplicates.add(value);
+    }
+    seen.add(value);
+  }
+
+  return [...duplicates];
+}
+
+function unique(values) {
+  return [...new Set(values)];
 }

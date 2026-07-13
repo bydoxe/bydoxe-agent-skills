@@ -11,6 +11,13 @@ Use this reference for server time and exchange-level common endpoints. Classify
 
 Do not ask the user to paste API keys, secrets, or passphrases into chat. Use local BYDOXE CLI credential loading for authenticated reads.
 
+## Commands
+
+| Purpose | CLI Command | Endpoint |
+| --- | --- | --- |
+| Server time | `bydoxe public time` | `GET /public/time` |
+| Trade fee | `bydoxe common trade-fee` | `GET /common/trade-fee` |
+
 ## Server Time
 
 Purpose: get the current BYDOXE server time for timestamp synchronization.
@@ -23,15 +30,10 @@ Endpoint:
 GET /public/time
 ```
 
-Current CLI command:
+Examples:
 
 ```sh
 bydoxe public time --format json
-```
-
-Dry-run:
-
-```sh
 bydoxe public time --dry-run --format json
 ```
 
@@ -62,14 +64,13 @@ Parameters:
 | --- | --- | --- |
 | `tradeType` | Yes | `SPOT` or `FUTURE` |
 
-Planned CLI command:
+Examples:
 
 ```sh
 bydoxe common trade-fee --tradeType SPOT --format json
 bydoxe common trade-fee --tradeType FUTURE --format json
+bydoxe common trade-fee --tradeType SPOT --dry-run --format json
 ```
-
-Current status: do not execute this command unless the CLI has implemented authenticated common reads.
 
 Important response fields:
 

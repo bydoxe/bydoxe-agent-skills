@@ -13,3 +13,4 @@
 - Add copy trading trader and follower references with read/write separation and `CONFIRM` guidance.
 - Add public and private WebSocket references for message previews, login signing, subscriptions, and private spot trade safety.
 - Add skill validation checks for reference links, domains, safety coverage, unfinished markers, and language rules.
+- Add validation that CLI registry commands are covered by Agent Skill references when the CLI project is available.
