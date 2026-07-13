@@ -21,6 +21,12 @@ const commandSourceFiles = [
   'src/commands/write-rest.ts',
   'src/commands/websocket.ts',
 ];
+const cliCommandGroupLabels = {
+  'public-rest': 'Public REST',
+  'private-rest': 'Authenticated REST',
+  'write-rest': 'Write REST',
+  websocket: 'WebSocket',
+};
 const unfinishedMarkerPattern = new RegExp(
   `\\b(${['TO' + 'DO', 'FIX' + 'ME', 'T' + 'BD'].join('|')})\\b`,
   'u',
@@ -420,10 +426,19 @@ async function findCliGeneratedArtifactProblems() {
   const referenceText = await readFile(artifactPaths.reference, 'utf8');
   const summaryText = await readFile(artifactPaths.summary, 'utf8');
   const expectedCommandCount = catalog.commands.length;
+  const catalogCommands = catalog.commands.filter((command) =>
+    command && typeof command === 'object' && typeof command.command === 'string',
+  );
+  const invalidCommandCount = catalog.commands.length - catalogCommands.length;
 
   if (catalog.commandCount !== expectedCommandCount) {
     problems.push(
       `CLI command catalog count mismatch: commandCount=${catalog.commandCount}, commands=${expectedCommandCount}`,
+    );
+  }
+  if (invalidCommandCount > 0) {
+    problems.push(
+      `CLI command catalog has invalid command entries: ${invalidCommandCount}`,
     );
   }
   if (!referenceText.includes(`Command count: \`${catalog.commandCount}\``)) {
@@ -431,6 +446,65 @@ async function findCliGeneratedArtifactProblems() {
   }
   if (!summaryText.includes(`Command count: \`${catalog.commandCount}\``)) {
     problems.push('CLI command summary is missing the catalog command count.');
+  }
+  problems.push(
+    ...findCliReferenceFreshnessProblems(referenceText, catalogCommands),
+    ...findCliSummaryFreshnessProblems(summaryText, catalog, catalogCommands),
+  );
+
+  return problems;
+}
+
+function findCliReferenceFreshnessProblems(referenceText, commands) {
+  return commands
+    .filter((command) => !referenceText.includes(`\`${command.command}\``))
+    .map((command) =>
+      `CLI command reference is missing catalog command: ${command.command}`,
+    );
+}
+
+function findCliSummaryFreshnessProblems(summaryText, catalog, commands) {
+  const problems = [];
+  const packageNeedles = [
+    ['package name', `Package: \`${catalog.packageName}\``],
+    ['package version', `Version: \`${catalog.packageVersion}\``],
+    ['schema version', `Schema version: \`${catalog.schemaVersion}\``],
+  ];
+  const writeCommands = commands.filter((command) => command.group === 'write-rest');
+  const writeValidationCount = writeCommands.filter((command) => command.validation).length;
+  const confirmCommandCount = commands.filter((command) =>
+    command.group === 'write-rest' || command.requiresConfirm,
+  ).length;
+
+  for (const [label, needle] of packageNeedles) {
+    if (!summaryText.includes(needle)) {
+      problems.push(`CLI command summary is missing catalog ${label}.`);
+    }
+  }
+
+  for (const [group, label] of Object.entries(cliCommandGroupLabels)) {
+    const groupCount = commands.filter((command) => command.group === group).length;
+    if (!summaryText.includes(`| ${label} | \`${groupCount}\``)) {
+      problems.push(
+        `CLI command summary has stale group count for ${label}: expected ${groupCount}`,
+      );
+    }
+  }
+
+  const validationNeedle =
+    `Write commands with local validation rules: \`${writeValidationCount}/${writeCommands.length}\``;
+  if (!summaryText.includes(validationNeedle)) {
+    problems.push(
+      `CLI command summary has stale write validation count: expected ${writeValidationCount}/${writeCommands.length}`,
+    );
+  }
+
+  const confirmationNeedle =
+    `Commands requiring exact confirmation: \`${confirmCommandCount}\``;
+  if (!summaryText.includes(confirmationNeedle)) {
+    problems.push(
+      `CLI command summary has stale confirmation count: expected ${confirmCommandCount}`,
+    );
   }
 
   return problems;
