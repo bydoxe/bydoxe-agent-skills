@@ -12,7 +12,7 @@ The scanned gateway source previously showed a possible double-slash path varian
 
 ## CLI Support
 
-The CLI currently builds WebSocket connection and message previews. Live WebSocket sessions are not implemented yet.
+The CLI builds WebSocket connection and message previews with `--dry-run`. Public WebSocket commands also support bounded live sessions with explicit `--live`.
 
 | Purpose | CLI Command | Message Shape |
 | --- | --- | --- |
@@ -52,8 +52,15 @@ bydoxe websocket public subscribe --instType USDT-FUTURES --channel candle1m --i
 bydoxe websocket public unsubscribe --instType SPOT --channel ticker --instId BTCUSDT --dry-run --format json
 ```
 
+Live public examples:
+
+```sh
+bydoxe websocket public ping --live --timeout-ms 5000 --format json
+bydoxe websocket public subscribe --instType SPOT --channel ticker --instId BTCUSDT --live --max-messages 5 --timeout-ms 15000 --format json
+```
+
 ## Safety
 
 Public WebSocket subscriptions are read-only market data actions and do not require `CONFIRM`.
 
-If a user asks for a long-running live stream, explain that the current CLI only builds message previews and does not maintain a live WebSocket session yet.
+Live public streams must be bounded with `--max-messages` and `--timeout-ms`. If the user asks for a long-running live stream, start with a short bounded preview and ask before increasing limits.

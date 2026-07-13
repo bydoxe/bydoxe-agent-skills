@@ -16,3 +16,4 @@
 - Add validation that CLI registry commands are covered by Agent Skill references when the CLI project is available.
 - Add validation for required sections in each Agent Skill reference file.
 - Tighten write-action safety guidance so `CONFIRM` is requested only after material parameters, exact commands, and dry-run previews are available.
+- Update public WebSocket guidance for bounded live sessions with `--live`, `--max-messages`, and `--timeout-ms`.
