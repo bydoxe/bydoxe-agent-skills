@@ -136,3 +136,5 @@ BYDOXE_RUN_LIVE_PRIVATE_WS_TESTS=1 BYDOXE_ENABLE_PRIVATE_WS_READONLY_LIVE=1 npm 
 ```
 
 Use the smoke command only in a local environment with credentials. It validates bounded private read-only execution and credential redaction, and it stays skipped during default validation.
+
+The companion CLI smoke uses the live private WebSocket URL `wss://open-api.bydoxe.com/v1/ws/private` by default and validates that URL in the bounded result.

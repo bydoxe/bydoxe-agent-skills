@@ -31,6 +31,7 @@ This checklist defines the minimum review path before publishing or tagging a BY
 - The safety reference must cover orders, cancellations, withdrawals, transfers, leverage, margin, TP/SL, trigger orders, copy trading changes, and WebSocket spot trade payloads.
 - Private WebSocket trade live execution must remain unsupported.
 - Private read-only WebSocket live guidance must require explicit local opt-in gates and bounded runtime controls.
+- Private read-only WebSocket live smoke must use the live private WebSocket URL `wss://open-api.bydoxe.com/v1/ws/private` unless an approved endpoint override is explicitly configured.
 - The skill must never ask users to paste API secrets into chat.
 
 ## Documentation Review
