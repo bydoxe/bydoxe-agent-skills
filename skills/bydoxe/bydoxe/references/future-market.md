@@ -13,10 +13,21 @@ The current BYDOXE CLI supports these futures market reads:
 | `bydoxe future market ticker` | `GET /future/market/24h-ticker` |
 | `bydoxe future market mark-price` | `GET /future/market/mark-price` |
 | `bydoxe future market book-ticker` | `GET /future/market/book-ticker` |
+| `bydoxe future market fills` | `GET /future/market/fills` |
+| `bydoxe future market fills-history` | `GET /future/market/fills-history` |
 | `bydoxe future market depth` | `GET /future/market/depth` |
 | `bydoxe future market candles` | `GET /future/market/candles` |
+| `bydoxe future market history-fund-rate` | `GET /future/market/history-fund-rate` |
+| `bydoxe future market history-candles` | `GET /future/market/history-candles` |
+| `bydoxe future market history-index-candles` | `GET /future/market/history-index-candles` |
+| `bydoxe future market history-mark-candles` | `GET /future/market/history-mark-candles` |
 | `bydoxe future market funding-info` | `GET /future/market/funding-info` |
 | `bydoxe future market open-interest` | `GET /future/market/open-interest` |
+| `bydoxe future market taker-buy-sell` | `GET /future/market/taker-buy-sell` |
+| `bydoxe future market account-long-short` | `GET /future/market/account-long-short` |
+| `bydoxe future market top-trader-position-long-short` | `GET /future/market/top-trader-position-long-short` |
+| `bydoxe future market top-trader-account-long-short` | `GET /future/market/top-trader-account-long-short` |
+| `bydoxe future market query-position-tier` | `GET /future/market/query-position-tier` |
 
 Use `--dry-run --format json` when reviewing request construction.
 
@@ -24,23 +35,23 @@ Use `--dry-run --format json` when reviewing request construction.
 
 | Purpose | Endpoint | Key Parameters | CLI Status |
 | --- | --- | --- | --- |
-| Taker buy/sell volume | `GET /future/market/taker-buy-sell` | `symbol`, `period` | Planned |
-| Account long/short ratio | `GET /future/market/account-long-short` | `symbol`, `period` | Planned |
-| Top trader position long/short ratio | `GET /future/market/top-trader-position-long-short` | `symbol`, `period` | Planned |
-| Top trader account long/short ratio | `GET /future/market/top-trader-account-long-short` | `symbol`, `period` | Planned |
+| Taker buy/sell volume | `GET /future/market/taker-buy-sell` | `symbol`, `period` | Supported |
+| Account long/short ratio | `GET /future/market/account-long-short` | `symbol`, `period` | Supported |
+| Top trader position long/short ratio | `GET /future/market/top-trader-position-long-short` | `symbol`, `period` | Supported |
+| Top trader account long/short ratio | `GET /future/market/top-trader-account-long-short` | `symbol`, `period` | Supported |
 | 24h ticker | `GET /future/market/24h-ticker` | `symbol` optional | Supported |
 | Mark price | `GET /future/market/mark-price` | `symbol` optional | Supported |
 | Best bid/ask | `GET /future/market/book-ticker` | `symbol` optional | Supported |
-| Recent trades | `GET /future/market/fills` | `symbol` required; `limit` optional | Planned |
-| Historical trades | `GET /future/market/fills-history` | `symbol` required; `limit`, `idLessThan`, `startTime`, `endTime` optional | Planned |
+| Recent trades | `GET /future/market/fills` | `symbol` required; `limit` optional | Supported |
+| Historical trades | `GET /future/market/fills-history` | `symbol` required; `limit`, `idLessThan`, `startTime`, `endTime` optional | Supported |
 | Open interest | `GET /future/market/open-interest` | `symbol` required | Supported |
 | Funding configuration | `GET /future/market/funding-info` | none | Supported |
-| Historical funding rates | `GET /future/market/history-fund-rate` | `symbol` required; `limit`, `startTime`, `endTime` optional | Planned |
+| Historical funding rates | `GET /future/market/history-fund-rate` | `symbol` required; `limit`, `startTime`, `endTime` optional | Supported |
 | Recent candles | `GET /future/market/candles` | `symbol`, `interval` required; `limit`, `startTime`, `endTime` optional | Supported |
-| Historical candles | `GET /future/market/history-candles` | `symbol`, `interval` required; `limit`, `startTime`, `endTime` optional | Planned |
-| Historical index candles | `GET /future/market/history-index-candles` | `symbol`, `interval` required; `limit`, `startTime`, `endTime` optional | Planned |
-| Historical mark candles | `GET /future/market/history-mark-candles` | `symbol`, `interval` required; `limit`, `startTime`, `endTime` optional | Planned |
-| Position tiers | `GET /future/market/query-position-tier` | `symbol` required | Planned |
+| Historical candles | `GET /future/market/history-candles` | `symbol`, `interval` required; `limit`, `startTime`, `endTime` optional | Supported |
+| Historical index candles | `GET /future/market/history-index-candles` | `symbol`, `interval` required; `limit`, `startTime`, `endTime` optional | Supported |
+| Historical mark candles | `GET /future/market/history-mark-candles` | `symbol`, `interval` required; `limit`, `startTime`, `endTime` optional | Supported |
+| Position tiers | `GET /future/market/query-position-tier` | `symbol` required | Supported |
 | Order book depth | `GET /future/market/depth` | `symbol` required; `limit` optional | Supported |
 
 ## Command Examples
@@ -62,21 +73,27 @@ Depth, candles, funding, and open interest:
 
 ```sh
 bydoxe future market book-ticker --symbol BTCUSDT --format json
+bydoxe future market fills --symbol BTCUSDT --limit 100 --format json
+bydoxe future market fills-history --symbol BTCUSDT --limit 500 --format json
 bydoxe future market depth --symbol BTCUSDT --limit 500 --format json
 bydoxe future market candles --symbol BTCUSDT --interval 1h --limit 500 --format json
+bydoxe future market history-candles --symbol BTCUSDT --interval 1h --limit 500 --format json
+bydoxe future market history-index-candles --symbol BTCUSDT --interval 1h --limit 500 --format json
+bydoxe future market history-mark-candles --symbol BTCUSDT --interval 1h --limit 500 --format json
 bydoxe future market funding-info --format json
+bydoxe future market history-fund-rate --symbol BTCUSDT --limit 100 --format json
 bydoxe future market open-interest --symbol BTCUSDT --format json
+bydoxe future market query-position-tier --symbol BTCUSDT --format json
 ```
 
-Planned command shapes:
+Long/short and taker flow:
 
 ```sh
-bydoxe future market history-fund-rate --symbol BTCUSDT --limit 100 --format json
-bydoxe future market account-long-short --symbol BTCUSDT --period 1h --format json
 bydoxe future market taker-buy-sell --symbol BTCUSDT --period 1h --format json
+bydoxe future market account-long-short --symbol BTCUSDT --period 1h --format json
+bydoxe future market top-trader-position-long-short --symbol BTCUSDT --period 1h --format json
+bydoxe future market top-trader-account-long-short --symbol BTCUSDT --period 1h --format json
 ```
-
-Do not execute planned command shapes until the CLI implements them.
 
 ## Parameter Notes
 

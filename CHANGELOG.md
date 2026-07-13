@@ -18,3 +18,4 @@
 - Tighten write-action safety guidance so `CONFIRM` is requested only after material parameters, exact commands, and dry-run previews are available.
 - Update public WebSocket guidance for bounded live sessions with `--live`, `--max-messages`, and `--timeout-ms`.
 - Update spot and futures market references for expanded public REST CLI coverage.
+- Update futures market reference for complete public REST CLI coverage.
