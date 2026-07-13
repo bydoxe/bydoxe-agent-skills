@@ -114,3 +114,11 @@ Private WebSocket live execution must remain disabled until these gates are impl
 - Bounded read-only private stream smoke tests.
 - Separate trade-send implementation with exact `CONFIRM`.
 - Explicit opt-in environment gate for live private sessions.
+
+## Read-Only Live Boundary
+
+The companion CLI may later add a read-only private WebSocket live path for login plus private subscribe or unsubscribe sessions. That path must stay limited to authenticated read-only streams, must use bounded runtime controls, and must require an explicit environment opt-in.
+
+Do not include `bydoxe websocket private spot trade` in any read-only live workflow. WebSocket trade payloads need a separate high-risk execution path with exact `CONFIRM`.
+
+Until the CLI exposes and validates this read-only path, keep all private WebSocket live requests in preview-only mode.
