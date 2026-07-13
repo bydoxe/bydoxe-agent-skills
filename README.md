@@ -30,6 +30,8 @@ Implemented:
 - Futures TP/SL write reference
 - Copy trading trader reference
 - Copy trading follower reference
+- Public WebSocket reference
+- Private WebSocket reference
 
 ## Layout
 
@@ -57,6 +59,8 @@ skills/bydoxe/bydoxe/
     future-tpsl.md
     copytrading-trader.md
     copytrading-follower.md
+    websocket-public.md
+    websocket-private.md
 ```
 
 ## CLI Dependency

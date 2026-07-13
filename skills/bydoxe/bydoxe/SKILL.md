@@ -39,10 +39,12 @@ Use this skill to turn BYDOXE Open API requests into safe BYDOXE CLI workflows. 
 - Futures take-profit and stop-loss writes: read [future-tpsl.md](references/future-tpsl.md).
 - Copy trading trader reads, TP/SL changes, settings, follower removal, and position close actions: read [copytrading-trader.md](references/copytrading-trader.md).
 - Copy trading follower reads, TP/SL changes, copy settings, position close actions, and cancel-follow actions: read [copytrading-follower.md](references/copytrading-follower.md).
+- Public WebSocket ping, subscribe, unsubscribe, and market stream previews: read [websocket-public.md](references/websocket-public.md).
+- Private WebSocket login, subscriptions, and spot trade message previews: read [websocket-private.md](references/websocket-private.md).
 
 ## Current CLI Surface
 
-The BYDOXE CLI supports public REST reads, authenticated account and order reads, spot writes, futures writes, trigger orders, TP/SL, and copy trading trader/follower commands documented in the reference files.
+The BYDOXE CLI supports public REST reads, authenticated account and order reads, spot writes, futures writes, trigger orders, TP/SL, copy trading trader/follower commands, and WebSocket message previews documented in the reference files.
 
 Common options:
 

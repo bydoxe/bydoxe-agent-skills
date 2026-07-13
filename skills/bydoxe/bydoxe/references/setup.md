@@ -10,7 +10,7 @@
 
 ## CLI Requirement
 
-Use the BYDOXE CLI for REST request construction and execution.
+Use the BYDOXE CLI for REST request construction, REST execution, and WebSocket message previews.
 
 ```sh
 bydoxe --help
@@ -42,7 +42,7 @@ export BYDOXE_PUBLIC_WS_URL="wss://open-api.bydoxe.com/v1/ws/public"
 export BYDOXE_PRIVATE_WS_URL="wss://open-api.bydoxe.com/v1/ws/private"
 ```
 
-## Initial Public REST Commands
+## Initial Public REST and WebSocket Commands
 
 ```sh
 bydoxe public time --dry-run
@@ -52,6 +52,9 @@ bydoxe spot market orderbook --symbol BTCUSDT --dry-run
 bydoxe spot market candles --symbol BTCUSDT --granularity 1m --limit 100 --dry-run
 bydoxe future market ticker --symbol BTCUSDT --dry-run
 bydoxe future market mark-price --symbol BTCUSDT --dry-run
+bydoxe websocket public subscribe --instType SPOT --channel ticker --instId BTCUSDT --dry-run --format json
+bydoxe websocket private login --dry-run --format json
 ```
 
 Use `--base-url <url>` only when the user intentionally targets a non-default environment.
+Use `--ws-url <url>` only when the user intentionally targets a non-default WebSocket environment.

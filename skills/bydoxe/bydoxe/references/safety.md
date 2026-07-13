@@ -8,8 +8,8 @@ Classify every request before acting.
 | --- | --- | --- |
 | Public read | Server time, tickers, symbols, order book, candles | Not required |
 | Authenticated read | Balances, positions, order history, fills, deposit records | Confirm credentials are configured locally |
-| Write action | Place order, cancel order, transfer, withdraw, set leverage, set margin, close position | Requires `CONFIRM` |
-| High-risk write action | Withdrawals, market orders, close positions, leverage changes, copy trading changes | Requires `CONFIRM` and a stricter review summary |
+| Write action | Place order, cancel order, transfer, withdraw, set leverage, set margin, close position, WebSocket spot trade | Requires `CONFIRM` |
+| High-risk write action | Withdrawals, market orders, close positions, leverage changes, copy trading changes, WebSocket trade payloads | Requires `CONFIRM` and a stricter review summary |
 
 ## Credential Rules
 
@@ -22,7 +22,7 @@ Classify every request before acting.
 Before any write action, show:
 
 - The exact CLI command.
-- Whether it is a spot, futures, account, withdrawal, or copy trading action.
+- Whether it is a spot, futures, account, withdrawal, copy trading, or WebSocket trade action.
 - The target symbol, asset, account, order ID, position, or follower/trader identifier.
 - Side, order type, quantity, price, trigger price, leverage, margin, or other material parameter.
 - The expected effect.

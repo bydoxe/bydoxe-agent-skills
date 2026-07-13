@@ -11,3 +11,4 @@
 - Add authenticated account, spot account, futures position, and futures account references.
 - Add write-action references for spot trading, spot account writes, futures orders, futures account writes, triggers, and TP/SL.
 - Add copy trading trader and follower references with read/write separation and `CONFIRM` guidance.
+- Add public and private WebSocket references for message previews, login signing, subscriptions, and private spot trade safety.
