@@ -40,6 +40,21 @@ Do not ask for `CONFIRM` until all material parameters are known and an exact co
 
 For "all", "full balance", "close everything", or equivalent requests, do not infer the quantity. Use an authenticated read command to inspect balances, positions, or open orders first, then build a dry-run write preview with explicit values.
 
+## Batch Body Review
+
+Batch write commands need extra review because one command can place, modify, or cancel multiple orders.
+
+Before asking for `CONFIRM` on a batch write, show:
+
+- Number of batch items.
+- Symbols covered by the batch.
+- Side and order type coverage when the body contains order placement or replacement.
+- Total visible quantity when all quantities are explicit.
+- Identifier count for batch cancellations.
+- Any missing or ambiguous nested value.
+
+If the companion CLI does not expose nested validation for the target batch body, keep the workflow in dry-run review mode and ask for explicit missing values before live execution.
+
 ## Required Write-Action Coverage
 
 Keep these high-risk actions covered by `CONFIRM` guidance:

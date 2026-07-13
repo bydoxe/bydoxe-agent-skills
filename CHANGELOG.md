@@ -24,3 +24,4 @@
 - Clarify that private WebSocket live execution is preview-only behind safety gates.
 - Point agent workflows to the generated CLI command reference when the companion CLI repository is available.
 - Document the read-only private WebSocket live boundary for later CLI support.
+- Add batch write body review guidance for nested order structures.

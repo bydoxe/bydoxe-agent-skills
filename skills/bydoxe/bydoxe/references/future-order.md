@@ -50,6 +50,8 @@ Before live execution, show:
 
 Prefer `--body` JSON for futures order writes.
 
+For batch bodies, review every nested order object before asking for `CONFIRM`. At minimum, show the batch item count, covered symbols, sides, hold sides when present, order types, visible quantities, prices when present, and identifier counts for cancellations.
+
 ```sh
 bydoxe future order place --body '{"symbol":"BTCUSDT","side":"BUY","orderType":"MARKET","size":"0.01"}' --dry-run --format json
 ```

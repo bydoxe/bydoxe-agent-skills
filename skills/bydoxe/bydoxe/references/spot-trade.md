@@ -51,6 +51,8 @@ If any item above is unknown, ask for the missing value or propose a read-only b
 
 Prefer `--body` JSON for order writes so numeric values and nested batch structures remain explicit.
 
+For batch bodies, review every nested order object before asking for `CONFIRM`. At minimum, show the batch item count, covered symbols, order sides, order types, visible quantities, prices when present, and identifier counts for cancellations.
+
 ```sh
 bydoxe spot trade place-order --body '{"symbol":"BTCUSDT","orderType":"LIMIT","tradeType":"BUY","price":"60000","amount":"0.001"}' --dry-run --format json
 ```
