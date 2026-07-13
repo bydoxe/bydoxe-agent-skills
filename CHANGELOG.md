@@ -20,3 +20,4 @@
 - Update spot and futures market references for expanded public REST CLI coverage.
 - Update futures market reference for complete public REST CLI coverage.
 - Add spot order information and futures trigger order read references.
+- Prefer the generated CLI command catalog for Agent Skill command coverage validation.

@@ -385,6 +385,9 @@ async function findCliReferenceSyncProblems(filesToScan) {
 }
 
 async function collectCliRegistryCommands(projectRoot) {
+  const catalogCommands = await collectCliCatalogCommands(projectRoot);
+  if (catalogCommands) return catalogCommands;
+
   const commands = [];
 
   for (const relativeFile of commandSourceFiles) {
@@ -400,6 +403,23 @@ async function collectCliRegistryCommands(projectRoot) {
   return commands.map((command) =>
     command.startsWith('missing-source:') ? command : `bydoxe ${command}`,
   );
+}
+
+async function collectCliCatalogCommands(projectRoot) {
+  const catalogPath = path.join(projectRoot, 'docs', 'command-catalog.json');
+
+  try {
+    const catalog = JSON.parse(await readFile(catalogPath, 'utf8'));
+    if (!Array.isArray(catalog.commands)) return undefined;
+
+    return catalog.commands.map((command) =>
+      typeof command.command === 'string'
+        ? command.command
+        : 'invalid-catalog-command',
+    );
+  } catch {
+    return undefined;
+  }
 }
 
 function extractCommands(sourceText) {
