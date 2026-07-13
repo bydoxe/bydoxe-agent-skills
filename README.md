@@ -28,6 +28,8 @@ Implemented:
 - Futures order write reference
 - Futures trigger order write reference
 - Futures TP/SL write reference
+- Copy trading trader reference
+- Copy trading follower reference
 
 ## Layout
 
@@ -53,6 +55,8 @@ skills/bydoxe/bydoxe/
     future-order.md
     future-trigger.md
     future-tpsl.md
+    copytrading-trader.md
+    copytrading-follower.md
 ```
 
 ## CLI Dependency

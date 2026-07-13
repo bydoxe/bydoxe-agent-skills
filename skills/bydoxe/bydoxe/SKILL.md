@@ -37,18 +37,12 @@ Use this skill to turn BYDOXE Open API requests into safe BYDOXE CLI workflows. 
 - Futures order placement, modification, cancellation, close-position, and cancel-all writes: read [future-order.md](references/future-order.md).
 - Futures trigger order writes: read [future-trigger.md](references/future-trigger.md).
 - Futures take-profit and stop-loss writes: read [future-tpsl.md](references/future-tpsl.md).
+- Copy trading trader reads, TP/SL changes, settings, follower removal, and position close actions: read [copytrading-trader.md](references/copytrading-trader.md).
+- Copy trading follower reads, TP/SL changes, copy settings, position close actions, and cancel-follow actions: read [copytrading-follower.md](references/copytrading-follower.md).
 
 ## Current CLI Surface
 
-The initial BYDOXE CLI supports these public REST commands:
-
-- `bydoxe public time`
-- `bydoxe spot market symbols`
-- `bydoxe spot market tickers`
-- `bydoxe spot market orderbook`
-- `bydoxe spot market candles`
-- `bydoxe future market ticker`
-- `bydoxe future market mark-price`
+The BYDOXE CLI supports public REST reads, authenticated account and order reads, spot writes, futures writes, trigger orders, TP/SL, and copy trading trader/follower commands documented in the reference files.
 
 Common options:
 
