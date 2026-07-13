@@ -16,6 +16,8 @@ Use the BYDOXE CLI for REST request construction, REST execution, and WebSocket 
 bydoxe --help
 ```
 
+When available, use `cli-project/docs/command-reference.md` as the generated CLI command reference for endpoint mapping, parameter hints, risk levels, and write validation rules.
+
 During early development, the CLI may be run from source:
 
 ```sh

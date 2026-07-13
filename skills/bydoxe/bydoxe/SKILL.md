@@ -46,6 +46,8 @@ Use this skill to turn BYDOXE Open API requests into safe BYDOXE CLI workflows. 
 
 The BYDOXE CLI supports public REST reads, authenticated account and order reads, spot writes, futures writes, trigger orders, TP/SL, copy trading trader/follower commands, and WebSocket message previews documented in the reference files.
 
+When the companion CLI repository is available, treat `cli-project/docs/command-reference.md` as the generated canonical command surface for endpoint mapping, parameter hints, risk levels, and write validation rules.
+
 Common options:
 
 - `--base-url <url>`
