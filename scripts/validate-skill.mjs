@@ -43,6 +43,151 @@ const requiredSafetyTerms = [
   'WebSocket spot trade',
   'CONFIRM',
 ];
+const referenceSectionRequirements = {
+  'account.md': [
+    'Safety',
+    'Commands',
+    'Examples',
+    'Parameters',
+    'Important Response Fields',
+  ],
+  'authentication.md': [
+    'REST Credentials',
+    'REST Signature Message',
+    'WebSocket Login Signature',
+    'Agent Handling',
+  ],
+  'common.md': [
+    'Safety',
+    'Commands',
+    'Server Time',
+    'Trade Fee',
+    'Response Envelope',
+  ],
+  'copytrading-follower.md': [
+    'Safety',
+    'Read Commands',
+    'Write Commands',
+    'Read Examples',
+    'Write Dry-Run Examples',
+    'Required Pre-Confirmation Summary',
+    'Parameter Notes',
+  ],
+  'copytrading-trader.md': [
+    'Safety',
+    'Read Commands',
+    'Write Commands',
+    'Read Examples',
+    'Write Dry-Run Examples',
+    'Required Pre-Confirmation Summary',
+    'Parameter Notes',
+  ],
+  'future-account.md': [
+    'Safety',
+    'Account and Estimate Commands',
+    'Futures Order Read Commands',
+    'Examples',
+    'Parameter Notes',
+    'Important Response Fields',
+    'Futures Account Write Commands',
+  ],
+  'future-market.md': [
+    'Current CLI Support',
+    'Endpoint Map',
+    'Command Examples',
+    'Parameter Notes',
+    'Important Response Fields',
+    'Safety',
+  ],
+  'future-order.md': [
+    'Safety',
+    'Commands',
+    'Dry-Run Examples',
+    'Required Pre-Confirmation Summary',
+    'Body Guidance',
+  ],
+  'future-position.md': [
+    'Safety',
+    'Commands',
+    'Examples',
+    'Parameters',
+    'Important Response Fields',
+  ],
+  'future-tpsl.md': [
+    'Commands',
+    'Dry-Run Examples',
+    'Required Pre-Confirmation Summary',
+    'Safety',
+  ],
+  'future-trigger.md': [
+    'Commands',
+    'Dry-Run Examples',
+    'Required Pre-Confirmation Summary',
+    'Safety',
+  ],
+  'glossary.md': ['API Areas', 'Trading Terms', 'Safety Terms'],
+  'language-support.md': [
+    'Core Rule',
+    'Intent Mapping',
+    'Ambiguity Rules',
+    'Confirmation Rule',
+    'Response Language',
+  ],
+  'output.md': ['Preferred CLI Options', 'Dry-Run Shape', 'Reporting Rules'],
+  'safety.md': [
+    'Classification',
+    'Credential Rules',
+    'Write Action Rule',
+    'Required Write-Action Coverage',
+    'Public Read Rule',
+  ],
+  'setup.md': [
+    'Default Domains',
+    'CLI Requirement',
+    'Environment Variables',
+    'Initial Public REST and WebSocket Commands',
+  ],
+  'spot-account.md': [
+    'Safety',
+    'Commands',
+    'Examples',
+    'Parameter Notes',
+    'Important Response Fields',
+    'Spot Account Write Commands',
+  ],
+  'spot-market.md': [
+    'Current CLI Support',
+    'Endpoint Map',
+    'Command Examples',
+    'Parameter Notes',
+    'Important Response Fields',
+    'Safety',
+  ],
+  'spot-trade.md': [
+    'Safety',
+    'Commands',
+    'Dry-Run Examples',
+    'Required Pre-Confirmation Summary',
+    'Body Guidance',
+  ],
+  'websocket-private.md': [
+    'Domain',
+    'Authentication',
+    'CLI Support',
+    'Private Subscription Channels',
+    'Spot Trade Message',
+    'Examples',
+    'Safety',
+  ],
+  'websocket-public.md': [
+    'Domain',
+    'CLI Support',
+    'Public Channel Argument',
+    'Public Channels',
+    'Examples',
+    'Safety',
+  ],
+};
 const ignoredDirectories = new Set(['.git']);
 const scannedExtensions = new Set(['.md', '.mjs', '.yaml', '.yml', '.json']);
 
@@ -58,6 +203,7 @@ const problems = [
   ...await findPatternProblems(files, unfinishedMarkerPattern, 'unfinished marker'),
   ...await findMissingDomainProblems(files),
   ...await findMissingSafetyTerms(),
+  ...await findReferenceSectionProblems(),
   ...await findCliReferenceSyncProblems(files),
 ];
 
@@ -170,6 +316,43 @@ async function findMissingSafetyTerms() {
   return requiredSafetyTerms
     .filter((term) => !safetyText.includes(term))
     .map((term) => `Safety reference is missing required term: ${term}`);
+}
+
+async function findReferenceSectionProblems() {
+  const referenceFiles = (await readdir(referencesRoot))
+    .filter((file) => file.endsWith('.md'))
+    .sort();
+  const expectedFiles = Object.keys(referenceSectionRequirements).sort();
+  const problems = [];
+
+  for (const file of referenceFiles) {
+    if (!referenceSectionRequirements[file]) {
+      problems.push(`Reference file has no section requirements: ${file}`);
+    }
+  }
+
+  for (const file of expectedFiles) {
+    if (!referenceFiles.includes(file)) {
+      problems.push(`Section requirements reference a missing file: ${file}`);
+      continue;
+    }
+
+    const referenceText = await readFile(path.join(referencesRoot, file), 'utf8');
+    const sections = extractSecondLevelHeadings(referenceText);
+    const missingSections = referenceSectionRequirements[file].filter(
+      (section) => !sections.includes(section),
+    );
+
+    for (const section of missingSections) {
+      problems.push(`Reference ${file} is missing required section: ${section}`);
+    }
+  }
+
+  return problems;
+}
+
+function extractSecondLevelHeadings(markdown) {
+  return [...markdown.matchAll(/^## (.+)$/gm)].map((match) => match[1].trim());
 }
 
 async function findCliReferenceSyncProblems(filesToScan) {

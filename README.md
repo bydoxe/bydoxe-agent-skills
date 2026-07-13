@@ -78,7 +78,7 @@ bydoxe spot market tickers --symbol BTCUSDT --dry-run --format json
 node scripts/validate-skill.mjs
 ```
 
-The validation script checks required skill files, `SKILL.md` reference links, default domains, safety coverage terms, CLI command reference sync when the CLI project is available, unfinished markers, and English-only artifacts outside the multilingual language reference.
+The validation script checks required skill files, `SKILL.md` reference links, required reference sections, default domains, safety coverage terms, CLI command reference sync when the CLI project is available, unfinished markers, and English-only artifacts outside the multilingual language reference.
 
 ## Safety
 
