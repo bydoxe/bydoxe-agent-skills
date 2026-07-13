@@ -1,14 +1,23 @@
-# Futures Trigger Writes
+# Futures Trigger REST
 
-Use this reference for authenticated futures trigger order writes. Every command in this file requires `--dry-run` review first and exact `--confirm CONFIRM` for live execution.
+Use this reference for authenticated futures trigger order reads and writes. Read commands require credentials but do not require `CONFIRM`. Write commands require `--dry-run` review first and exact `--confirm CONFIRM` for live execution.
 
 ## Commands
 
 | Purpose | CLI Command | Endpoint | Risk |
 | --- | --- | --- | --- |
+| Pending trigger orders | `bydoxe future trigger orders-pending` | `GET /future/order/orders-plan-pending` | Read-only |
+| Trigger order history | `bydoxe future trigger orders-history` | `GET /future/order/orders-plan-history` | Read-only |
 | Place trigger order | `bydoxe future trigger place` | `POST /future/order/place-plan-order` | Creates a conditional futures order |
 | Modify trigger order | `bydoxe future trigger modify` | `POST /future/order/modify-plan-order` | Changes a conditional futures order |
 | Cancel trigger order | `bydoxe future trigger cancel` | `POST /future/order/cancel-plan-order` | Cancels one or more trigger orders |
+
+## Read Examples
+
+```sh
+bydoxe future trigger orders-pending --limit 100 --symbol BTCUSDT --format json
+bydoxe future trigger orders-history --limit 100 --symbol BTCUSDT --format json
+```
 
 ## Dry-Run Examples
 
@@ -30,4 +39,4 @@ Before live execution, show:
 
 ## Safety
 
-Trigger orders are write actions even if they do not execute immediately. Treat them as future order placement or order modification.
+Reading pending or historical trigger orders is an authenticated read. Creating, modifying, or canceling trigger orders is a write action even if the order does not execute immediately. Treat write commands as future order placement or order modification.

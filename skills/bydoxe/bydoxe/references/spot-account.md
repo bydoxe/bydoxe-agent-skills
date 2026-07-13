@@ -21,6 +21,7 @@ Read-only endpoints in this file do not require `CONFIRM`. Transfers, withdrawal
 | Open spot orders | `bydoxe spot trade unfilled-orders` | `GET /spot/trade/unfilled-orders` |
 | Spot order history | `bydoxe spot trade history-orders` | `GET /spot/trade/history-orders` |
 | Spot order fills | `bydoxe spot trade fills` | `GET /spot/trade/fills` |
+| Spot order information | `bydoxe spot trade order-info` | `POST /spot/trade/order-info` |
 
 ## Examples
 
@@ -48,6 +49,12 @@ Spot order history:
 bydoxe spot trade history-orders --symbol BTCUSDT --limit 100 --format json
 ```
 
+Spot order information:
+
+```sh
+bydoxe spot trade order-info --orderId spot-order-id --format json
+```
+
 Dry-run:
 
 ```sh
@@ -67,6 +74,8 @@ Common parameters include:
 | `limit` | Number of records to return |
 | `startTime` / `endTime` | Millisecond timestamp filters |
 | `orderId` / `clientOid` | Order identifiers for order reads when supported |
+
+`spot trade order-info` is a read-only POST endpoint. It does not require `CONFIRM`; build its body from flags or pass `--body` JSON.
 
 ## Important Response Fields
 

@@ -35,7 +35,7 @@ Use this skill to turn BYDOXE Open API requests into safe BYDOXE CLI workflows. 
 - Authenticated futures position reads: read [future-position.md](references/future-position.md).
 - Authenticated futures account estimates and futures order reads: read [future-account.md](references/future-account.md).
 - Futures order placement, modification, cancellation, close-position, and cancel-all writes: read [future-order.md](references/future-order.md).
-- Futures trigger order writes: read [future-trigger.md](references/future-trigger.md).
+- Futures trigger order reads and writes: read [future-trigger.md](references/future-trigger.md).
 - Futures take-profit and stop-loss writes: read [future-tpsl.md](references/future-tpsl.md).
 - Copy trading trader reads, TP/SL changes, settings, follower removal, and position close actions: read [copytrading-trader.md](references/copytrading-trader.md).
 - Copy trading follower reads, TP/SL changes, copy settings, position close actions, and cancel-follow actions: read [copytrading-follower.md](references/copytrading-follower.md).
