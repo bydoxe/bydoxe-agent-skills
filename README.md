@@ -1,8 +1,8 @@
 # BYDOXE Agent Skills
 
-BYDOXE Agent Skills helps AI agents understand and operate BYDOXE workflows through the companion BYDOXE CLI.
+BYDOXE Agent Skills helps Agent Skills-compatible AI tools understand and operate BYDOXE workflows through the companion BYDOXE CLI.
 
-Install this skill package when you want an AI assistant to translate user requests into safe BYDOXE CLI workflows for market data, account review, trading preparation, futures workflows, copy trading, and WebSocket previews.
+Install this skill package when you want an AI assistant in Codex, Claude Code, Cursor, VS Code GitHub Copilot, or another Agent Skills-compatible client to translate user requests into safe BYDOXE CLI workflows for market data, account review, trading preparation, futures workflows, copy trading, and WebSocket previews.
 
 The skill is designed for multilingual users and preview-first operation:
 
@@ -11,6 +11,30 @@ The skill is designed for multilingual users and preview-first operation:
 - It tells the agent to use dry-run previews before sensitive actions.
 - It requires exact `CONFIRM` before write actions.
 - It routes agents to generated CLI references when the companion CLI repository is available.
+
+## Installation
+
+Requires Node.js 18+.
+
+Install the skill for the active agent workspace:
+
+```sh
+npx skills add bydoxe/bydoxe-agent-skills
+```
+
+Install globally when your agent supports global skills:
+
+```sh
+npx skills add bydoxe/bydoxe-agent-skills -g
+```
+
+This package is designed for Agent Skills-compatible clients, including Codex, Claude Code, Cursor, VS Code GitHub Copilot, and other tools that load `SKILL.md` packages.
+
+Install the companion CLI separately:
+
+```sh
+npm install -g @bydoxe/bydoxe-cli
+```
 
 ## What The Skill Helps With
 
@@ -96,7 +120,7 @@ skills/bydoxe/bydoxe/
 
 ## Distribution
 
-The current BYDOXE Agent Skills release target is version `0.1.1`, matching the companion BYDOXE CLI patch release target. The project is distributed as a BYDOXE Agent Skills skill package.
+The current BYDOXE Agent Skills release target is version `0.1.1`, matching the companion BYDOXE CLI patch release target. The project is distributed as an Agent Skills-compatible skill package through GitHub and release archives.
 
 Use [docs/distribution.md](docs/distribution.md) for versioning, skill package distribution, companion CLI compatibility, and installer-owned credential configuration policy.
 

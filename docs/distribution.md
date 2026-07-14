@@ -22,7 +22,21 @@ Recommended versioning rules:
 
 ## Skill Package Distribution
 
-BYDOXE Agent Skills is intended to be distributed as a skill package.
+BYDOXE Agent Skills is intended to be distributed as an Agent Skills-compatible skill package.
+
+Primary installation path:
+
+```sh
+npx skills add bydoxe/bydoxe-agent-skills
+```
+
+Global installation path when supported by the target agent:
+
+```sh
+npx skills add bydoxe/bydoxe-agent-skills -g
+```
+
+The repository layout should remain compatible with agents that install skills from GitHub repositories, including Codex, Claude Code, Cursor, VS Code GitHub Copilot, and other tools that load `SKILL.md` packages.
 
 The package must include:
 
@@ -89,6 +103,19 @@ When the companion CLI is available, generated CLI artifacts should remain the s
 - `cli-project/docs/command-catalog.json`
 - `cli-project/docs/command-reference.md`
 - `cli-project/docs/command-summary.md`
+
+## Agent Compatibility
+
+The skill should remain vendor-neutral and follow the Agent Skills `SKILL.md` package format.
+
+Compatibility requirements:
+
+- Keep the skill entry point at `skills/bydoxe/bydoxe/SKILL.md`.
+- Keep the skill directory name aligned with the `name: bydoxe` frontmatter.
+- Keep detailed materials in `references/` so compatible agents can use progressive disclosure.
+- Avoid relying on Codex-only behavior in core instructions.
+- Keep `agents/openai.yaml` as optional OpenAI UI metadata without making it required for other agents.
+- Document companion CLI commands in plain shell examples that any local agent can run with user approval.
 
 ## Publish Readiness
 

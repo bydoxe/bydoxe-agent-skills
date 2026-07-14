@@ -1,6 +1,12 @@
 ---
 name: bydoxe
-description: BYDOXE Open API agent workflow guidance. Use when Codex needs to help with BYDOXE market data, account lookups, multilingual trading requests, REST or WebSocket workflows, CLI command selection, API authentication, request signing, dry-run previews, or safe handling of orders, transfers, withdrawals, futures settings, TP/SL, trigger orders, and copy trading tasks.
+description: BYDOXE Open API agent workflow guidance. Use when an AI agent needs help with BYDOXE market data, account lookups, multilingual trading requests, REST or WebSocket workflows, CLI command selection, API authentication, request signing, dry-run previews, or safe handling of orders, transfers, withdrawals, futures settings, TP/SL, trigger orders, and copy trading tasks.
+license: Proprietary. LICENSE.md has complete terms.
+metadata:
+  author: BYDOXE
+  version: "0.1.1"
+  companion_cli: "@bydoxe/bydoxe-cli"
+  compatibility_clients: "Agent Skills-compatible clients including Codex, Claude Code, Cursor, VS Code GitHub Copilot, and other agents that load SKILL.md packages."
 ---
 
 # BYDOXE
