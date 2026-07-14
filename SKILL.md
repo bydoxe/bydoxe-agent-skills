@@ -27,6 +27,7 @@ Use this skill to turn BYDOXE Open API requests into safe BYDOXE CLI workflows. 
 ## Reference Routing
 
 - Setup, installation, environment variables, and default domains: read [setup.md](references/setup.md).
+- Credential setup, key handling, missing credentials, and exposed-secret handling: read [credential-management.md](references/credential-management.md).
 - Authentication, HMAC signing, private REST headers, and WebSocket login signing: read [authentication.md](references/authentication.md).
 - Safety classification, `CONFIRM` rules, credential handling, and write-action review checklists: read [safety.md](references/safety.md).
 - Multilingual request interpretation for Korean, Japanese, Chinese, Vietnamese, and Russian trading language: read [language-support.md](references/language-support.md).

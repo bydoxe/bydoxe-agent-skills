@@ -70,6 +70,14 @@ const referenceSectionRequirements = {
     'Trade Fee',
     'Response Envelope',
   ],
+  'credential-management.md': [
+    'Core Rule',
+    'Required Values',
+    'Current Supported Configuration',
+    'Agent Handling',
+    'Private Workflow Boundary',
+    'Setup Check Commands',
+  ],
   'copytrading-follower.md': [
     'Safety',
     'Read Commands',
@@ -150,7 +158,7 @@ const referenceSectionRequirements = {
   'setup.md': [
     'Default Domains',
     'CLI Requirement',
-    'Environment Variables',
+    'Credential Setup',
     'Initial Public REST and WebSocket Commands',
   ],
   'spot-account.md': [

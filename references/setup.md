@@ -28,15 +28,19 @@ npm run build
 node dist/cli.js --help
 ```
 
-## Environment Variables
+## Credential Setup
 
-Private requests require credentials configured locally:
+Private requests require credentials configured locally for the companion CLI. Use [credential-management.md](credential-management.md) for the full key handling policy.
+
+The current supported setup uses environment variables:
 
 ```sh
 export BYDOXE_ACCESS_KEY="<your-access-key>"
 export BYDOXE_SECRET_KEY="<your-secret-key>"
 export BYDOXE_PASSPHRASE="<your-passphrase>"
 ```
+
+Do not paste real values into chat. Use placeholders in examples and configure real values only in the user's local shell, local secret manager, or approved runtime environment.
 
 Optional endpoint overrides:
 

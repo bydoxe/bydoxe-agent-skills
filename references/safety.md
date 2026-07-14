@@ -16,6 +16,7 @@ Classify every request before acting.
 - Never ask the user to paste API keys, secrets, or passphrases into chat.
 - Tell the user to configure credentials locally through environment variables or a secure environment manager.
 - Do not print secrets in command examples, logs, dry-run previews, or summaries.
+- Use [credential-management.md](credential-management.md) when explaining setup, missing credentials, exposed credentials, or private API connection checks.
 
 ## Write Action Rule
 

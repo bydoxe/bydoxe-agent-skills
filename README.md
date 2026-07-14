@@ -78,7 +78,11 @@ bydoxe spot market tickers --symbol BTCUSDT --dry-run --format json
 bydoxe future position all --dry-run --format json
 ```
 
-Each installer or operator must configure private API credentials in the local CLI environment:
+## Authentication
+
+After installing the skill and companion CLI, configure BYDOXE API credentials locally for private account, order, position, copy trading, and private WebSocket workflows.
+
+The current supported configuration uses local environment variables:
 
 ```sh
 export BYDOXE_ACCESS_KEY="<your-access-key>"
@@ -86,7 +90,9 @@ export BYDOXE_SECRET_KEY="<your-secret-key>"
 export BYDOXE_PASSPHRASE="<your-passphrase>"
 ```
 
-The skill package must never include credentials.
+The skill package must never include credentials. Do not paste real API keys, secrets, or passphrases into AI chat sessions, issues, release notes, README files, or shared logs.
+
+Use [references/credential-management.md](references/credential-management.md) for key handling, missing credential behavior, exposed-secret handling, and private workflow boundaries.
 
 ## Included References
 
@@ -95,6 +101,7 @@ SKILL.md
 agents/openai.yaml
 references/
   setup.md
+  credential-management.md
   safety.md
   authentication.md
   glossary.md
