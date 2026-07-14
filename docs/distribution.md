@@ -84,7 +84,7 @@ When the companion CLI is available, generated CLI artifacts should remain the s
 
 ## Publish Readiness
 
-Publishing is deferred until the skill package distribution account or registry target is prepared.
+Publishing requires confirmed skill package distribution access and repository or registry ownership.
 
 Before publishing:
 

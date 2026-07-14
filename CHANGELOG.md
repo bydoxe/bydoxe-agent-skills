@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 - Unreleased
+## 0.1.0 - 2026-07-14
 
 - Add initial BYDOXE Agent Skills repository scaffold.
 - Add core BYDOXE skill instructions.

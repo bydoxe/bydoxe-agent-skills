@@ -96,7 +96,7 @@ skills/bydoxe/bydoxe/
 
 ## Distribution
 
-The first BYDOXE Agent Skills release is planned to share version `0.1.0` with the first BYDOXE CLI release. The skill package will be distributed as a BYDOXE Agent Skills package after package ownership is prepared.
+The first BYDOXE Agent Skills release uses version `0.1.0`, matching the first BYDOXE CLI release. The project is distributed as a BYDOXE Agent Skills skill package.
 
 Use [docs/distribution.md](docs/distribution.md) for versioning, skill package distribution, companion CLI compatibility, and installer-owned credential configuration policy.
 
