@@ -36,3 +36,4 @@
 - Add a release readiness checklist for skill packaging, companion CLI synchronization, and safety review.
 - Document the live private WebSocket URL used by optional private read-only smoke validation.
 - Add skill package distribution and installer-owned credential configuration policy.
+- Rewrite README introduction around user workflows, safety rules, companion CLI setup, and skill package use.

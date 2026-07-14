@@ -1,41 +1,70 @@
 # BYDOXE Agent Skills
 
-BYDOXE Agent Skills helps AI agents use the BYDOXE Open API through safe, CLI-first workflows.
+BYDOXE Agent Skills helps AI agents understand and operate BYDOXE workflows through the companion BYDOXE CLI.
 
-The skill package guides agents through market data lookup, account inquiry, authentication handling, dry-run previews, structured output, and explicit confirmation for risky actions such as orders, withdrawals, transfers, futures settings, TP/SL, trigger orders, and copy trading changes.
+Install this skill package when you want an AI assistant to translate user requests into safe BYDOXE CLI workflows for market data, account review, trading preparation, futures workflows, copy trading, and WebSocket previews.
 
-## Status
+The skill is designed for multilingual users and preview-first operation:
 
-This repository is in the initial skill scaffold phase.
+- It maps natural-language requests to BYDOXE CLI commands.
+- It keeps private API credentials in the user's local CLI environment.
+- It tells the agent to use dry-run previews before sensitive actions.
+- It requires exact `CONFIRM` before write actions.
+- It routes agents to generated CLI references when the companion CLI repository is available.
 
-The skill package is intended to be distributed as a BYDOXE Agent Skills package after package ownership is prepared.
+## What The Skill Helps With
 
-Implemented:
+- Public market data requests for spot and futures markets.
+- Authenticated account, balance, position, order, and copy trading review.
+- Spot order, futures order, TP/SL, trigger order, transfer, withdrawal, leverage, margin, and copy trading change preparation.
+- Public WebSocket subscription previews and bounded live guidance.
+- Private WebSocket login and subscription previews.
+- Private read-only WebSocket live guidance behind explicit local opt-in gates.
+- Korean, Japanese, Chinese, Vietnamese, and Russian intent interpretation for common trading terms.
 
-- BYDOXE skill metadata and routing instructions
-- Setup reference
-- Safety reference
-- Authentication reference
-- Glossary reference
-- Language support reference
-- Output reference
-- Common public and exchange-level reference
-- Authenticated account reference
-- Spot market reference
-- Authenticated spot account reference
-- Spot trade write reference
-- Futures market reference
-- Authenticated futures position reference
-- Authenticated futures account reference
-- Futures order write reference
-- Futures trigger order write reference
-- Futures TP/SL write reference
-- Copy trading trader reference
-- Copy trading follower reference
-- Public WebSocket reference
-- Private WebSocket reference
+## Typical Requests
 
-## Layout
+An AI assistant using this skill should be able to handle requests like:
+
+```text
+Show the BTCUSDT ticker.
+Check my futures positions.
+Prepare a market buy order for BTCUSDT.
+Show my copy trading follower settings.
+Preview a public WebSocket ticker subscription.
+```
+
+For write actions, the assistant should first produce a dry-run preview and risk summary. It should ask for exact `CONFIRM` only after the user has reviewed the material command details.
+
+## User Safety Rules
+
+- Do not paste API secrets into AI chat sessions.
+- Configure private credentials locally for the companion BYDOXE CLI.
+- Treat order placement, cancellation, withdrawals, transfers, leverage, margin, TP/SL, trigger orders, copy trading changes, and WebSocket spot trade payloads as high-risk workflows.
+- Keep private WebSocket spot trade live execution unsupported.
+- Keep private read-only WebSocket live execution behind local opt-in gates and bounded runtime controls.
+
+## Companion CLI
+
+This skill expects the BYDOXE CLI to provide request construction, credential loading, signing, dry-run previews, and structured output.
+
+```sh
+bydoxe --help
+bydoxe spot market tickers --symbol BTCUSDT --dry-run --format json
+bydoxe future position all --dry-run --format json
+```
+
+Each installer or operator must configure private API credentials in the local CLI environment:
+
+```sh
+export BYDOXE_ACCESS_KEY="<your-access-key>"
+export BYDOXE_SECRET_KEY="<your-secret-key>"
+export BYDOXE_PASSPHRASE="<your-passphrase>"
+```
+
+The skill package must never include credentials.
+
+## Included References
 
 ```text
 skills/bydoxe/bydoxe/
@@ -65,29 +94,18 @@ skills/bydoxe/bydoxe/
     websocket-private.md
 ```
 
-## CLI Dependency
+## Distribution
 
-This skill expects the BYDOXE CLI to provide request construction, credential loading, signing, dry-run previews, and structured output.
+The first BYDOXE Agent Skills release is planned to share version `0.1.0` with the first BYDOXE CLI release. The skill package will be distributed as a BYDOXE Agent Skills package after package ownership is prepared.
 
-```sh
-bydoxe --help
-bydoxe spot market tickers --symbol BTCUSDT --dry-run --format json
-```
+Use [docs/distribution.md](docs/distribution.md) for versioning, skill package distribution, companion CLI compatibility, and installer-owned credential configuration policy.
 
-## Validation
+Use [docs/release-readiness.md](docs/release-readiness.md) before publishing or tagging a release.
+
+## Maintainer Checks
 
 ```sh
 node scripts/validate-skill.mjs
 ```
 
 The validation script checks required skill files, `SKILL.md` reference links, required reference sections, default domains, safety coverage terms, CLI command reference sync when the CLI project is available, unfinished markers, and English-only artifacts outside the multilingual language reference.
-
-Use [docs/release-readiness.md](docs/release-readiness.md) before publishing or tagging a release.
-
-Use [docs/distribution.md](docs/distribution.md) for versioning, skill package distribution, companion CLI compatibility, and installer-owned credential configuration policy.
-
-## Safety
-
-Do not paste API secrets into AI chat sessions. Configure credentials locally in the shell or a secure environment manager.
-
-Any write action that can change balances, orders, positions, leverage, margin settings, withdrawals, or copy trading settings requires explicit `CONFIRM` after a command and risk summary.
