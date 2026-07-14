@@ -8,6 +8,8 @@ The skill package guides agents through market data lookup, account inquiry, aut
 
 This repository is in the initial skill scaffold phase.
 
+The skill package is intended to be distributed as a BYDOXE Agent Skills package after package ownership is prepared.
+
 Implemented:
 
 - BYDOXE skill metadata and routing instructions
@@ -81,6 +83,8 @@ node scripts/validate-skill.mjs
 The validation script checks required skill files, `SKILL.md` reference links, required reference sections, default domains, safety coverage terms, CLI command reference sync when the CLI project is available, unfinished markers, and English-only artifacts outside the multilingual language reference.
 
 Use [docs/release-readiness.md](docs/release-readiness.md) before publishing or tagging a release.
+
+Use [docs/distribution.md](docs/distribution.md) for versioning, skill package distribution, companion CLI compatibility, and installer-owned credential configuration policy.
 
 ## Safety
 

@@ -2,6 +2,8 @@
 
 This checklist defines the minimum review path before publishing or tagging a BYDOXE Agent Skills release.
 
+Use [distribution.md](distribution.md) for versioning, skill package distribution, companion CLI compatibility, and installer-owned credential configuration policy.
+
 ## Required Local Checks
 
 - Run `node scripts/validate-skill.mjs`.
@@ -40,6 +42,7 @@ This checklist defines the minimum review path before publishing or tagging a BY
 - `CHANGELOG.md` must describe user-visible skill and safety guidance changes.
 - `DISCLAIMER.md` and `skills/bydoxe/bydoxe/LICENSE.md` must remain present.
 - References must prefer generated CLI artifacts over hand-maintained command lists when the companion CLI repository is available.
+- Documentation must instruct installers or operators to configure private API credentials locally through the companion CLI environment.
 
 ## Release Decision
 
@@ -49,4 +52,5 @@ Release is ready only when:
 - Companion CLI synchronization is verified or explicitly unavailable in a standalone package context.
 - Safety review has no open blocker.
 - Documentation review is complete.
+- The first release version matches the companion BYDOXE CLI release version.
 - The release commit is tagged from a clean working tree.
