@@ -7,6 +7,7 @@ Use [distribution.md](distribution.md) for versioning, skill package distributio
 ## Required Local Checks
 
 - Run `node scripts/validate-skill.mjs`.
+- Run `node scripts/package-skill.mjs`.
 - Run the root wrapper `scripts/validate-agent-skill.sh` when this repository is used from the workspace root.
 - Confirm the companion CLI repository is present when checking command reference synchronization.
 - Confirm validation still passes when the companion CLI repository is absent from a standalone skill package environment.
@@ -41,6 +42,7 @@ Use [distribution.md](distribution.md) for versioning, skill package distributio
 - README status and layout must match the packaged skill tree.
 - `CHANGELOG.md` must describe user-visible skill and safety guidance changes.
 - `DISCLAIMER.md` and `skills/bydoxe/bydoxe/LICENSE.md` must remain present.
+- `dist/bydoxe-agent-skills-<version>.tar.gz`, `dist/bydoxe-agent-skills-<version>.zip`, and the SHA-256 checksum file must be regenerated for the release.
 - References must prefer generated CLI artifacts over hand-maintained command lists when the companion CLI repository is available.
 - Documentation must instruct installers or operators to configure private API credentials locally through the companion CLI environment.
 

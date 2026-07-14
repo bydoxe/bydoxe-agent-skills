@@ -3,6 +3,7 @@
 ## 0.1.1 - 2026-07-14
 
 - Align skill package versioning with the companion BYDOXE CLI `0.1.1` patch release.
+- Add release packaging automation for skill package archives and checksums.
 - Document the live private WebSocket URL used by optional private read-only smoke validation.
 - Add skill package distribution and installer-owned credential configuration policy.
 - Rewrite README introduction around user workflows, safety rules, companion CLI setup, and skill package use.

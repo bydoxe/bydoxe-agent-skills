@@ -42,6 +42,14 @@ The package must not include:
 - Temporary test output
 - Workspace-only planning notes
 
+Build the local release artifacts with:
+
+```sh
+node scripts/package-skill.mjs
+```
+
+The script creates `dist/bydoxe-agent-skills-<version>.tar.gz`, `dist/bydoxe-agent-skills-<version>.zip`, and a SHA-256 checksum file. The archive uses an explicit allowlist so workspace notes, credentials, generated logs, and temporary files are not included.
+
 ## Credential Configuration
 
 BYDOXE private API credentials must be configured by each installer or operator through the companion CLI environment.
