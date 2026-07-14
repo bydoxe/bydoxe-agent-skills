@@ -82,7 +82,16 @@ bydoxe future position all --dry-run --format json
 
 After installing the skill and companion CLI, configure BYDOXE API credentials locally for private account, order, position, copy trading, and private WebSocket workflows.
 
-The current supported configuration uses local environment variables:
+Recommended local profile setup:
+
+```sh
+bydoxe config set
+bydoxe config status
+```
+
+`bydoxe config status` reports only masked setup state. It does not print API secrets.
+
+Environment variables are also supported and take priority over the local profile:
 
 ```sh
 export BYDOXE_ACCESS_KEY="<your-access-key>"
@@ -126,7 +135,7 @@ references/
 
 ## Distribution
 
-The current BYDOXE Agent Skills release target is version `0.1.1`, matching the companion BYDOXE CLI patch release target. The project is distributed as an Agent Skills-compatible skill package through GitHub and release archives.
+The current BYDOXE Agent Skills release target is version `0.1.2`, matching the companion BYDOXE CLI patch release target. The project is distributed as an Agent Skills-compatible skill package through GitHub and release archives.
 
 Use [docs/distribution.md](docs/distribution.md) for versioning, skill package distribution, companion CLI compatibility, and installer-owned credential configuration policy.
 

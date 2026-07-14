@@ -9,7 +9,7 @@ The current public release of BYDOXE Agent Skills must use the same version as t
 Current patch release target:
 
 ```text
-0.1.1
+0.1.2
 ```
 
 After each release, the maintainer may choose future versions based on implementation scope, safety guidance changes, companion CLI compatibility, and documentation updates.
@@ -72,7 +72,14 @@ The skill package must never ship with credentials, placeholder secrets that loo
 
 Agents must instruct users to configure credentials locally rather than paste secrets into chat.
 
-Expected companion CLI environment variables:
+Recommended companion CLI profile setup:
+
+```sh
+bydoxe config set
+bydoxe config status
+```
+
+Expected companion CLI environment variables when environment-based setup is preferred:
 
 ```sh
 export BYDOXE_ACCESS_KEY="<your-access-key>"
@@ -94,8 +101,8 @@ The current release should be paired with the same-version BYDOXE CLI release.
 For the current release:
 
 ```text
-BYDOXE CLI 0.1.1
-BYDOXE Agent Skills 0.1.1
+BYDOXE CLI 0.1.2
+BYDOXE Agent Skills 0.1.2
 ```
 
 When the companion CLI is available, generated CLI artifacts should remain the source of truth for command coverage:

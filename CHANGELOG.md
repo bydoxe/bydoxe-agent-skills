@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.2 - 2026-07-14
+
+- Align skill package versioning with the companion BYDOXE CLI `0.1.2` patch release.
+- Update credential guidance for `bydoxe config set`, `bydoxe config status`, and `bydoxe config clear`.
+- Clarify that agents must verify credential setup through CLI status output and must not read local credential files directly.
+- Document local profile and environment variable credential priority.
+
 ## 0.1.1 - 2026-07-14
 
 - Align skill package versioning with the companion BYDOXE CLI `0.1.1` patch release.

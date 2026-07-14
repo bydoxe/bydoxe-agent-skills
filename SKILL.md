@@ -4,7 +4,7 @@ description: BYDOXE Open API agent workflow guidance. Use when an AI agent needs
 license: Proprietary. LICENSE.md has complete terms.
 metadata:
   author: BYDOXE
-  version: "0.1.1"
+  version: "0.1.2"
   companion_cli: "@bydoxe/bydoxe-cli"
   compatibility_clients: "Agent Skills-compatible clients including Codex, Claude Code, Cursor, VS Code GitHub Copilot, and other agents that load SKILL.md packages."
 ---
@@ -22,7 +22,8 @@ Use this skill to turn BYDOXE Open API requests into safe BYDOXE CLI workflows. 
 3. Prefer `--dry-run` when building or reviewing requests.
 4. Never ask the user to paste API secrets into chat.
 5. Require explicit `CONFIRM` before any write action that can place orders, cancel orders, move funds, withdraw assets, change leverage or margin settings, close positions, modify TP/SL, or change copy trading settings.
-6. Report the exact CLI command, endpoint class, authentication requirement, and safety status before execution when risk is non-trivial.
+6. Use `bydoxe config status` to check credential setup when private access is needed. Do not read local credential files directly.
+7. Report the exact CLI command, endpoint class, authentication requirement, and safety status before execution when risk is non-trivial.
 
 ## Reference Routing
 

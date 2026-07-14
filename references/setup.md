@@ -32,7 +32,14 @@ node dist/cli.js --help
 
 Private requests require credentials configured locally for the companion CLI. Use [credential-management.md](credential-management.md) for the full key handling policy.
 
-The current supported setup uses environment variables:
+Recommended local profile setup:
+
+```sh
+bydoxe config set
+bydoxe config status
+```
+
+Environment variables are also supported and take priority over the local profile:
 
 ```sh
 export BYDOXE_ACCESS_KEY="<your-access-key>"
@@ -40,7 +47,7 @@ export BYDOXE_SECRET_KEY="<your-secret-key>"
 export BYDOXE_PASSPHRASE="<your-passphrase>"
 ```
 
-Do not paste real values into chat. Use placeholders in examples and configure real values only in the user's local shell, local secret manager, or approved runtime environment.
+Do not paste real values into chat. Use placeholders in examples and configure real values only through the CLI prompt, the user's local shell, local secret manager, or approved runtime environment.
 
 Optional endpoint overrides:
 

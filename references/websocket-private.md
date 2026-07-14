@@ -30,7 +30,7 @@ The signature message is:
 timestamp + "GET" + "/user/verify"
 ```
 
-The CLI loads credentials from local environment variables and redacts credential-bearing fields in dry-run output.
+The CLI loads credentials from environment variables first, then from the local credential profile, and redacts credential-bearing fields in dry-run output.
 
 ## CLI Support
 

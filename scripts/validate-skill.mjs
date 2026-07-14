@@ -74,6 +74,7 @@ const referenceSectionRequirements = {
     'Core Rule',
     'Required Values',
     'Current Supported Configuration',
+    'Local Profile Commands',
     'Agent Handling',
     'Private Workflow Boundary',
     'Setup Check Commands',

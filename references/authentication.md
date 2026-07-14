@@ -40,4 +40,4 @@ timestamp + "GET" + "/user/verify"
 
 Use the BYDOXE CLI to load credentials and sign requests. Do not manually construct secret-bearing commands in chat unless a reference explicitly requires it and secrets are represented only as environment variable names.
 
-If credentials are missing, follow [credential-management.md](credential-management.md). Tell the user which environment variable names are required without asking them to reveal values.
+If credentials are missing, follow [credential-management.md](credential-management.md). Prefer `bydoxe config set` for local setup and `bydoxe config status` for masked setup checks. If the user prefers environment variables, list the required environment variable names without asking them to reveal values.

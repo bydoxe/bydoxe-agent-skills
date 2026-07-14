@@ -14,7 +14,8 @@ Classify every request before acting.
 ## Credential Rules
 
 - Never ask the user to paste API keys, secrets, or passphrases into chat.
-- Tell the user to configure credentials locally through environment variables or a secure environment manager.
+- Tell the user to configure credentials locally through `bydoxe config set`, environment variables, or a secure environment manager.
+- Use `bydoxe config status` for masked setup checks. Do not read local credential files directly.
 - Do not print secrets in command examples, logs, dry-run previews, or summaries.
 - Use [credential-management.md](credential-management.md) when explaining setup, missing credentials, exposed credentials, or private API connection checks.
 
