@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.1 - 2026-07-14
+
+- Align skill package versioning with the companion BYDOXE CLI `0.1.1` patch release.
+- Document the live private WebSocket URL used by optional private read-only smoke validation.
+- Add skill package distribution and installer-owned credential configuration policy.
+- Rewrite README introduction around user workflows, safety rules, companion CLI setup, and skill package use.
+
 ## 0.1.0 - 2026-07-14
 
 - Add initial BYDOXE Agent Skills repository scaffold.
@@ -34,6 +41,3 @@
 - Tighten companion CLI generated artifact freshness checks for command references and summaries.
 - Document the optional private read-only WebSocket live smoke gate.
 - Add a release readiness checklist for skill packaging, companion CLI synchronization, and safety review.
-- Document the live private WebSocket URL used by optional private read-only smoke validation.
-- Add skill package distribution and installer-owned credential configuration policy.
-- Rewrite README introduction around user workflows, safety rules, companion CLI setup, and skill package use.

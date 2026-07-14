@@ -4,15 +4,15 @@ This document defines the release and distribution policy for BYDOXE Agent Skill
 
 ## Release Versioning
 
-The first public release of BYDOXE Agent Skills must use the same version as the first BYDOXE CLI release.
+The current public release of BYDOXE Agent Skills must use the same version as the companion BYDOXE CLI release.
 
-Initial release target:
+Current patch release target:
 
 ```text
-0.1.0
+0.1.1
 ```
 
-After the first release, the maintainer may choose future versions based on implementation scope, safety guidance changes, companion CLI compatibility, and documentation updates.
+After each release, the maintainer may choose future versions based on implementation scope, safety guidance changes, companion CLI compatibility, and documentation updates.
 
 Recommended versioning rules:
 
@@ -67,13 +67,13 @@ export BYDOXE_ENABLE_PRIVATE_WS_READONLY_LIVE=1
 
 ## Companion CLI Compatibility
 
-The first release should be paired with the same-version BYDOXE CLI release.
+The current release should be paired with the same-version BYDOXE CLI release.
 
-For the first release:
+For the current release:
 
 ```text
-BYDOXE CLI 0.1.0
-BYDOXE Agent Skills 0.1.0
+BYDOXE CLI 0.1.1
+BYDOXE Agent Skills 0.1.1
 ```
 
 When the companion CLI is available, generated CLI artifacts should remain the source of truth for command coverage:
@@ -90,6 +90,6 @@ Before publishing:
 
 - Complete the release readiness checklist.
 - Confirm skill package ownership and release access.
-- Confirm the version matches the companion BYDOXE CLI release for the first release.
+- Confirm the version matches the companion BYDOXE CLI release for the coordinated release.
 - Confirm private credential setup remains installer-owned.
 - Confirm private WebSocket trade live execution remains unsupported.

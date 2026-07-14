@@ -96,7 +96,7 @@ skills/bydoxe/bydoxe/
 
 ## Distribution
 
-The first BYDOXE Agent Skills release uses version `0.1.0`, matching the first BYDOXE CLI release. The project is distributed as a BYDOXE Agent Skills skill package.
+The current BYDOXE Agent Skills release target is version `0.1.1`, matching the companion BYDOXE CLI patch release target. The project is distributed as a BYDOXE Agent Skills skill package.
 
 Use [docs/distribution.md](docs/distribution.md) for versioning, skill package distribution, companion CLI compatibility, and installer-owned credential configuration policy.
 

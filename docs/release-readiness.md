@@ -52,5 +52,5 @@ Release is ready only when:
 - Companion CLI synchronization is verified or explicitly unavailable in a standalone package context.
 - Safety review has no open blocker.
 - Documentation review is complete.
-- The first release version matches the companion BYDOXE CLI release version.
+- The release version matches the companion BYDOXE CLI release version.
 - The release commit is tagged from a clean working tree.
