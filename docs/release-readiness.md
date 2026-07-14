@@ -22,10 +22,10 @@ Use [distribution.md](distribution.md) for versioning, skill package distributio
 
 ## Skill Package Review
 
-- `skills/bydoxe/bydoxe/SKILL.md` must route users to the correct reference file.
-- `skills/bydoxe/bydoxe/agents/openai.yaml` must remain present.
+- Top-level `SKILL.md` must route users to the correct reference file.
+- `agents/openai.yaml` must remain present.
 - `SKILL.md` frontmatter must remain compatible with the Agent Skills specification.
-- Every file in `skills/bydoxe/bydoxe/references` must have required sections enforced by validation.
+- Every file in `references` must have required sections enforced by validation.
 - `language-support.md` is the only reference file allowed to contain multilingual examples.
 - All other project artifacts must remain English-only.
 
@@ -42,7 +42,7 @@ Use [distribution.md](distribution.md) for versioning, skill package distributio
 
 - README status and layout must match the packaged skill tree.
 - `CHANGELOG.md` must describe user-visible skill and safety guidance changes.
-- `DISCLAIMER.md` and `skills/bydoxe/bydoxe/LICENSE.md` must remain present.
+- `DISCLAIMER.md` and `LICENSE.md` must remain present.
 - `dist/bydoxe-agent-skills-<version>.tar.gz`, `dist/bydoxe-agent-skills-<version>.zip`, and the SHA-256 checksum file must be regenerated for the release.
 - References must prefer generated CLI artifacts over hand-maintained command lists when the companion CLI repository is available.
 - Documentation must instruct installers or operators to configure private API credentials locally through the companion CLI environment.

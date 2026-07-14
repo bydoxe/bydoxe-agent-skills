@@ -3,6 +3,7 @@
 ## 0.1.1 - 2026-07-14
 
 - Align skill package versioning with the companion BYDOXE CLI `0.1.1` patch release.
+- Move the skill package to a top-level `SKILL.md` layout for GitHub and archive installers.
 - Add release packaging automation for skill package archives and checksums.
 - Document GitHub-based `npx skills add` installation and broader Agent Skills-compatible client support.
 - Add broad Agent Skills client compatibility metadata to `SKILL.md`.

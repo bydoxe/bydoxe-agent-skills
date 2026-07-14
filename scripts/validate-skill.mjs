@@ -3,7 +3,7 @@ import path from 'node:path';
 import process from 'node:process';
 
 const root = process.cwd();
-const skillRoot = path.join(root, 'skills', 'bydoxe', 'bydoxe');
+const skillRoot = root;
 const skillFile = path.join(skillRoot, 'SKILL.md');
 const referencesRoot = path.join(skillRoot, 'references');
 const languageSupportFile = path.join(referencesRoot, 'language-support.md');

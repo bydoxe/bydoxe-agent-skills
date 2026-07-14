@@ -91,31 +91,30 @@ The skill package must never include credentials.
 ## Included References
 
 ```text
-skills/bydoxe/bydoxe/
-  SKILL.md
-  agents/openai.yaml
-  references/
-    setup.md
-    safety.md
-    authentication.md
-    glossary.md
-    language-support.md
-    output.md
-    common.md
-    account.md
-    spot-market.md
-    spot-account.md
-    spot-trade.md
-    future-market.md
-    future-position.md
-    future-account.md
-    future-order.md
-    future-trigger.md
-    future-tpsl.md
-    copytrading-trader.md
-    copytrading-follower.md
-    websocket-public.md
-    websocket-private.md
+SKILL.md
+agents/openai.yaml
+references/
+  setup.md
+  safety.md
+  authentication.md
+  glossary.md
+  language-support.md
+  output.md
+  common.md
+  account.md
+  spot-market.md
+  spot-account.md
+  spot-trade.md
+  future-market.md
+  future-position.md
+  future-account.md
+  future-order.md
+  future-trigger.md
+  future-tpsl.md
+  copytrading-trader.md
+  copytrading-follower.md
+  websocket-public.md
+  websocket-private.md
 ```
 
 ## Distribution

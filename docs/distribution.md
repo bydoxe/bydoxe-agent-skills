@@ -40,10 +40,10 @@ The repository layout should remain compatible with agents that install skills f
 
 The package must include:
 
-- `skills/bydoxe/bydoxe/SKILL.md`
-- `skills/bydoxe/bydoxe/agents/openai.yaml`
-- `skills/bydoxe/bydoxe/references`
-- `skills/bydoxe/bydoxe/LICENSE.md`
+- `SKILL.md`
+- `agents/openai.yaml`
+- `references`
+- `LICENSE.md`
 - `README.md`
 - `DISCLAIMER.md`
 - `CHANGELOG.md`
@@ -62,7 +62,7 @@ Build the local release artifacts with:
 node scripts/package-skill.mjs
 ```
 
-The script creates `dist/bydoxe-agent-skills-<version>.tar.gz`, `dist/bydoxe-agent-skills-<version>.zip`, and a SHA-256 checksum file. The archive uses an explicit allowlist so workspace notes, credentials, generated logs, and temporary files are not included.
+The script creates `dist/bydoxe-agent-skills-<version>.tar.gz`, `dist/bydoxe-agent-skills-<version>.zip`, and a SHA-256 checksum file. Each archive has `SKILL.md` in the top-level package folder. The archive uses an explicit allowlist so workspace notes, credentials, generated logs, and temporary files are not included.
 
 ## Credential Configuration
 
@@ -110,7 +110,7 @@ The skill should remain vendor-neutral and follow the Agent Skills `SKILL.md` pa
 
 Compatibility requirements:
 
-- Keep the skill entry point at `skills/bydoxe/bydoxe/SKILL.md`.
+- Keep the skill entry point at top-level `SKILL.md`.
 - Keep the skill directory name aligned with the `name: bydoxe` frontmatter.
 - Keep detailed materials in `references/` so compatible agents can use progressive disclosure.
 - Avoid relying on Codex-only behavior in core instructions.

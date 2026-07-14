@@ -29,10 +29,10 @@ const zipPath = path.join(distRoot, `${packageName}.zip`);
 const checksumsPath = path.join(distRoot, `${packageName}.sha256`);
 
 const includedPaths = [
-  'skills/bydoxe/bydoxe/SKILL.md',
-  'skills/bydoxe/bydoxe/agents/openai.yaml',
-  'skills/bydoxe/bydoxe/references',
-  'skills/bydoxe/bydoxe/LICENSE.md',
+  'SKILL.md',
+  'agents/openai.yaml',
+  'references',
+  'LICENSE.md',
   'README.md',
   'DISCLAIMER.md',
   'CHANGELOG.md',
