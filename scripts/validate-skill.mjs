@@ -45,6 +45,7 @@ const requiredSafetyTerms = [
   'modify-plan-order',
   'place-tpsl-order',
   'modify-tpsl-order',
+  'cancel-tpsl-order',
   'copy trading',
   'WebSocket spot trade',
   'CONFIRM',
@@ -149,6 +150,12 @@ const referenceSectionRequirements = {
     'Response Language',
   ],
   'output.md': ['Preferred CLI Options', 'Dry-Run Shape', 'Reporting Rules'],
+  'pending-product-areas.md': [
+    'Current Status',
+    'Agent Handling',
+    'Planned Command Group Names',
+    'Safety',
+  ],
   'safety.md': [
     'Classification',
     'Credential Rules',

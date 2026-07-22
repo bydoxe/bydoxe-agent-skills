@@ -129,13 +129,14 @@ references/
   future-tpsl.md
   copytrading-trader.md
   copytrading-follower.md
+  pending-product-areas.md
   websocket-public.md
   websocket-private.md
 ```
 
 ## Distribution
 
-The current BYDOXE Agent Skills release target is version `0.1.2`, matching the companion BYDOXE CLI patch release target. The project is distributed as an Agent Skills-compatible skill package through GitHub and release archives.
+The current BYDOXE Agent Skills release target is version `0.1.3`, matching the companion BYDOXE CLI patch release target. The project is distributed as an Agent Skills-compatible skill package through GitHub and release archives.
 
 Use [docs/distribution.md](docs/distribution.md) for versioning, skill package distribution, companion CLI compatibility, and installer-owned credential configuration policy.
 

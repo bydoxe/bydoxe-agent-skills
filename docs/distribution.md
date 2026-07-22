@@ -9,7 +9,7 @@ The current public release of BYDOXE Agent Skills must use the same version as t
 Current patch release target:
 
 ```text
-0.1.2
+0.1.3
 ```
 
 After each release, the maintainer may choose future versions based on implementation scope, safety guidance changes, companion CLI compatibility, and documentation updates.
@@ -101,8 +101,8 @@ The current release should be paired with the same-version BYDOXE CLI release.
 For the current release:
 
 ```text
-BYDOXE CLI 0.1.2
-BYDOXE Agent Skills 0.1.2
+BYDOXE CLI 0.1.3
+BYDOXE Agent Skills 0.1.3
 ```
 
 When the companion CLI is available, generated CLI artifacts should remain the source of truth for command coverage:

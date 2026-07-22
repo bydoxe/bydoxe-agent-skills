@@ -8,7 +8,7 @@ Classify every request before acting.
 | --- | --- | --- |
 | Public read | Server time, tickers, symbols, order book, candles | Not required |
 | Authenticated read | Balances, positions, order history, fills, deposit records | Confirm credentials are configured locally |
-| Write action | Place order, cancel order, transfer, withdraw, set leverage, set margin, close position, WebSocket spot trade | Requires `CONFIRM` |
+| Write action | Place order, cancel order, transfer, withdraw, set leverage, set margin, close position, TP/SL cancel, WebSocket spot trade | Requires `CONFIRM` |
 | High-risk write action | Withdrawals, market orders, close positions, leverage changes, copy trading changes, WebSocket trade payloads | Requires `CONFIRM` and a stricter review summary |
 
 ## Credential Rules
@@ -74,6 +74,7 @@ Keep these high-risk actions covered by `CONFIRM` guidance:
 - `modify-plan-order`
 - `place-tpsl-order`
 - `modify-tpsl-order`
+- `cancel-tpsl-order`
 - copy trading settings, follower removal, position close, and cancel-follow actions
 - WebSocket spot trade payloads
 

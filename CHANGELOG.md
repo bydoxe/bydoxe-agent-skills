@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.3 - 2026-07-22
+
+- Add guidance for `bydoxe future tpsl cancel` and `POST /future/order/cancel-tpsl-order`.
+- Align spot, futures, trigger, TP/SL, and copy trading examples with the companion CLI `0.1.3` command metadata.
+- Add pending product area guidance for CFD, OTC, stock, and TradFi-style schema areas that do not yet expose public Open API routes.
+- Update release metadata to match the companion BYDOXE CLI `0.1.3` patch release.
+
 ## 0.1.2 - 2026-07-14
 
 - Align skill package versioning with the companion BYDOXE CLI `0.1.2` patch release.

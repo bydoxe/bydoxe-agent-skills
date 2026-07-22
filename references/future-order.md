@@ -28,8 +28,9 @@ CONFIRM
 ## Dry-Run Examples
 
 ```sh
-bydoxe future order place --body '{"symbol":"BTCUSDT","side":"BUY","orderType":"LIMIT","price":"60000","size":"0.01"}' --dry-run --format json
+bydoxe future order place --body '{"symbol":"BTCUSDT","marginMode":"CROSS","side":"LONG","tradeSide":"OPEN","orderType":"LIMIT","price":"60000","size":"0.01"}' --dry-run --format json
 bydoxe future order cancel --body '{"symbol":"BTCUSDT","orderId":"future-order-id"}' --dry-run --format json
+bydoxe future order batch-cancel --body '{"orderIdList":[{"orderId":"future-order-id"}]}' --dry-run --format json
 bydoxe future order close-positions --body '{"symbol":"BTCUSDT","holdSide":"LONG"}' --dry-run --format json
 bydoxe future order cancel-all --dry-run --format json
 ```
@@ -39,7 +40,7 @@ bydoxe future order cancel-all --dry-run --format json
 Before live execution, show:
 
 - Exact CLI command.
-- Symbol, side, hold side, order type, quantity, price, trigger or condition if any.
+- Symbol, margin mode, side, trade side, order type, quantity, price, trigger or condition if any.
 - Order ID, client order ID, or number of orders for cancel/modify/batch actions.
 - Position side and expected exposure reduction for close-position actions.
 - Leverage and margin context if known.
@@ -50,8 +51,8 @@ Before live execution, show:
 
 Prefer `--body` JSON for futures order writes.
 
-For batch bodies, review every nested order object before asking for `CONFIRM`. At minimum, show the batch item count, covered symbols, sides, hold sides when present, order types, visible quantities, prices when present, and identifier counts for cancellations.
+For batch bodies, review every nested order object before asking for `CONFIRM`. At minimum, show the batch item count, covered symbols, margin mode, sides, trade sides, order types, visible quantities, prices when present, and identifier counts for cancellations.
 
 ```sh
-bydoxe future order place --body '{"symbol":"BTCUSDT","side":"BUY","orderType":"MARKET","size":"0.01"}' --dry-run --format json
+bydoxe future order place --body '{"symbol":"BTCUSDT","marginMode":"CROSS","side":"LONG","tradeSide":"OPEN","orderType":"MARKET","size":"0.01"}' --dry-run --format json
 ```

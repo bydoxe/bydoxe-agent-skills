@@ -29,7 +29,7 @@ Do not ask for `CONFIRM` before showing a dry-run command with explicit order de
 ## Dry-Run Examples
 
 ```sh
-bydoxe spot trade place-order --body '{"symbol":"BTCUSDT","orderType":"MARKET","tradeType":"BUY","amount":"0.001"}' --dry-run --format json
+bydoxe spot trade place-order --body '{"base":"BTC","quote":"USDT","orderType":"MARKET","tradeType":"BUY","amount":"0.001"}' --dry-run --format json
 bydoxe spot trade cancel-order --body '{"symbol":"BTCUSDT","orderId":"spot-order-id"}' --dry-run --format json
 bydoxe spot trade cancel-symbol-order --body '{"symbol":"BTCUSDT"}' --dry-run --format json
 ```
@@ -39,7 +39,7 @@ bydoxe spot trade cancel-symbol-order --body '{"symbol":"BTCUSDT"}' --dry-run --
 Before live execution, show:
 
 - Exact CLI command.
-- Symbol, side, order type, quantity, price, and quote/base amount.
+- Base asset, quote asset, symbol when required, side, order type, quantity, price, and quote/base amount.
 - Order ID or client order ID for cancellations.
 - Number of orders for batch actions.
 - Expected effect.
@@ -54,5 +54,5 @@ Prefer `--body` JSON for order writes so numeric values and nested batch structu
 For batch bodies, review every nested order object before asking for `CONFIRM`. At minimum, show the batch item count, covered symbols, order sides, order types, visible quantities, prices when present, and identifier counts for cancellations.
 
 ```sh
-bydoxe spot trade place-order --body '{"symbol":"BTCUSDT","orderType":"LIMIT","tradeType":"BUY","price":"60000","amount":"0.001"}' --dry-run --format json
+bydoxe spot trade place-order --body '{"base":"BTC","quote":"USDT","orderType":"LIMIT","tradeType":"BUY","price":"60000","amount":"0.001"}' --dry-run --format json
 ```

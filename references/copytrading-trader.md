@@ -47,10 +47,10 @@ bydoxe copytrading trader followers --pageNo 1 --pageSize 20 --dry-run --format 
 ## Write Dry-Run Examples
 
 ```sh
-bydoxe copytrading trader modify-tpsl --body '{"symbol":"BTCUSDT","trackingNo":"track-1","stopSurplusPrice":"62000","stopLossPrice":"58000"}' --dry-run --format json
-bydoxe copytrading trader close-positions --body '{"symbol":"BTCUSDT","trackingNo":"track-1"}' --dry-run --format json
-bydoxe copytrading trader config --body '{"symbol":"BTCUSDT","copyTradeMode":"fixed"}' --dry-run --format json
-bydoxe copytrading trader remove-follower --body '{"followerId":"follower-1"}' --dry-run --format json
+bydoxe copytrading trader modify-tpsl --body '{"productType":"USDT-FUTURES","trackingNo":"track-1","stopSurplusPrice":"62000","stopLossPrice":"58000"}' --dry-run --format json
+bydoxe copytrading trader close-positions --body '{"productType":"USDT-FUTURES","symbol":"BTCUSDT","trackingNo":"track-1","orderType":"MARKET"}' --dry-run --format json
+bydoxe copytrading trader config --body '{"traderMode":true,"copyPairList":["BTCUSDT"],"profitShareRatio":10}' --dry-run --format json
+bydoxe copytrading trader remove-follower --body '{"followerUid":"follower-1"}' --dry-run --format json
 ```
 
 ## Required Pre-Confirmation Summary
@@ -59,7 +59,7 @@ Before live execution, show:
 
 - Exact CLI command.
 - Trader-side action type.
-- Symbol, tracking number, follower identifier, position side, and TP/SL values when present.
+- Product type, symbol, tracking number, follower UID, position side, and TP/SL values when present.
 - Current setting and intended new setting when known.
 - Expected effect on followers, copied positions, or tracked orders.
 - Confirmation requirement: exact `CONFIRM`.
@@ -69,8 +69,9 @@ Before live execution, show:
 | Parameter | Meaning |
 | --- | --- |
 | `symbol` | Futures trading pair such as `BTCUSDT` |
+| `productType` | Copy trading product type such as `USDT-FUTURES` |
 | `trackingNo` | Copy trading tracking identifier when supplied by BYDOXE |
-| `followerId` | Follower identifier for removal actions |
+| `followerUid` | Follower identifier for removal actions |
 | `pageNo` / `pageSize` | Pagination controls |
 | `startTime` / `endTime` | Millisecond timestamp filters |
 | `stopSurplusPrice` | Take-profit trigger price when supported |

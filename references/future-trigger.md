@@ -22,9 +22,9 @@ bydoxe future trigger orders-history --limit 100 --symbol BTCUSDT --format json
 ## Dry-Run Examples
 
 ```sh
-bydoxe future trigger place --body '{"symbol":"BTCUSDT","side":"BUY","triggerPrice":"61000","orderType":"LIMIT","price":"60900","size":"0.01"}' --dry-run --format json
-bydoxe future trigger modify --body '{"symbol":"BTCUSDT","orderId":"trigger-order-id","triggerPrice":"61500"}' --dry-run --format json
-bydoxe future trigger cancel --body '{"symbol":"BTCUSDT","orderId":"trigger-order-id"}' --dry-run --format json
+bydoxe future trigger place --body '{"symbol":"BTCUSDT","marginMode":"CROSS","side":"LONG","triggerPrice":"61000","triggerPriceType":"LAST","price":"60900","size":"0.01"}' --dry-run --format json
+bydoxe future trigger modify --body '{"orderId":"trigger-order-id","newTriggerPrice":"61500","newTriggerPriceType":"LAST"}' --dry-run --format json
+bydoxe future trigger cancel --body '{"symbol":"BTCUSDT","orderIdList":[{"orderId":"trigger-order-id"}]}' --dry-run --format json
 ```
 
 ## Required Pre-Confirmation Summary
@@ -32,8 +32,8 @@ bydoxe future trigger cancel --body '{"symbol":"BTCUSDT","orderId":"trigger-orde
 Before live execution, show:
 
 - Exact CLI command.
-- Symbol, side, trigger price, execution price, order type, and size.
-- Trigger order ID for modify or cancel actions.
+- Symbol, margin mode, side, trigger price type, trigger price, execution price, and size.
+- Trigger order IDs for modify or cancel actions.
 - Expected effect when the trigger condition is met.
 - Confirmation requirement: exact `CONFIRM`.
 

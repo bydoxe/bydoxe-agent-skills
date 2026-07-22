@@ -36,19 +36,19 @@ High-risk follower write actions include:
 ## Read Examples
 
 ```sh
-bydoxe copytrading follower current-orders --symbol BTCUSDT --dry-run --format json
-bydoxe copytrading follower history-orders --symbol BTCUSDT --pageNo 1 --pageSize 20 --dry-run --format json
-bydoxe copytrading follower settings --traderId trader-1 --dry-run --format json
-bydoxe copytrading follower traders --dry-run --format json
+bydoxe copytrading follower current-orders --productType USDT-FUTURES --symbol BTCUSDT --dry-run --format json
+bydoxe copytrading follower history-orders --productType USDT-FUTURES --symbol BTCUSDT --limit 20 --dry-run --format json
+bydoxe copytrading follower settings --productType USDT-FUTURES --traderUid trader-1 --dry-run --format json
+bydoxe copytrading follower traders --productType USDT-FUTURES --dry-run --format json
 ```
 
 ## Write Dry-Run Examples
 
 ```sh
-bydoxe copytrading follower setting-tpsl --body '{"symbol":"BTCUSDT","trackingNo":"track-1","stopSurplusPrice":"62000","stopLossPrice":"58000"}' --dry-run --format json
-bydoxe copytrading follower setting-copy-trade --body '{"traderId":"trader-1","symbol":"BTCUSDT","copyAmount":"100"}' --dry-run --format json
-bydoxe copytrading follower close-positions --body '{"symbol":"BTCUSDT","trackingNo":"track-1"}' --dry-run --format json
-bydoxe copytrading follower cancel-follow --body '{"traderId":"trader-1"}' --dry-run --format json
+bydoxe copytrading follower setting-tpsl --body '{"productType":"USDT-FUTURES","trackingNo":"track-1","stopSurplusPrice":"62000","stopLossPrice":"58000"}' --dry-run --format json
+bydoxe copytrading follower setting-copy-trade --body '{"productType":"USDT-FUTURES","traderUid":"trader-1","fixedAmount":"100","orderType":"FIXED_AMOUNT"}' --dry-run --format json
+bydoxe copytrading follower close-positions --body '{"productType":"USDT-FUTURES","symbol":"BTCUSDT","trackingNo":"track-1","orderType":"MARKET"}' --dry-run --format json
+bydoxe copytrading follower cancel-follow --body '{"productType":"USDT-FUTURES","traderUid":"trader-1"}' --dry-run --format json
 ```
 
 ## Required Pre-Confirmation Summary
@@ -57,7 +57,7 @@ Before live execution, show:
 
 - Exact CLI command.
 - Follower-side action type.
-- Trader identifier, symbol, tracking number, position side, copy amount, and TP/SL values when present.
+- Product type, trader UID, symbol, tracking number, position side, copy amount, and TP/SL values when present.
 - Whether the action changes future copied orders, existing copied positions, or the follow relationship.
 - Current setting and intended new setting when known.
 - Confirmation requirement: exact `CONFIRM`.
@@ -66,11 +66,12 @@ Before live execution, show:
 
 | Parameter | Meaning |
 | --- | --- |
-| `traderId` | Trader identifier for settings, follow, or cancel-follow actions |
+| `productType` | Copy trading product type such as `USDT-FUTURES` |
+| `traderUid` | Trader identifier for settings, follow, or cancel-follow actions |
 | `symbol` | Futures trading pair such as `BTCUSDT` |
 | `trackingNo` | Copy trading tracking identifier when supplied by BYDOXE |
-| `copyAmount` | Follower copy amount when supported |
-| `pageNo` / `pageSize` | Pagination controls |
+| `fixedAmount` / `amountPerOrderUsdt` | Follower copy amount fields when supported |
+| `limit` / `idLessThan` / `idGreaterThan` | Pagination controls |
 | `startTime` / `endTime` | Millisecond timestamp filters |
 | `stopSurplusPrice` | Take-profit trigger price when supported |
 | `stopLossPrice` | Stop-loss trigger price when supported |
